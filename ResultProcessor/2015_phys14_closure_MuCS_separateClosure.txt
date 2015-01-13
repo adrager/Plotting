@@ -1,0 +1,100 @@
+# Specify global parameters
+global :: id: Mu_Closure_test
+global :: lumi: 5
+global :: publication status: Preliminary
+global :: output formats:  pdf
+style :: plot yields: true 
+
+
+# Specify the variables that are read from the ntuple and their type
+event content :: name: HT; type: Float_t; label: H_{T}; unit: GeV
+event content :: name: MHT; type: Float_t; label: #slash{H}_{T}; unit: GeV
+event content :: name: MET; type: Float_t; label: #slash{E}_{T}; unit: GeV
+event content :: name: NJets; type: Int_t; label: N_{Jets}
+event content :: name: BTags; type: Int_t; label: BTags
+event content :: name: NVtx; type: UShort_t; label: N(Vtx)
+event content :: name: MTW; type: Float_t; label: M_{T}(w)
+
+event content :: name: DeltaPhi1; type: Float_t; label: #Delta#Phi_{1}
+event content :: name: DeltaPhi2; type: Float_t; label: #Delta#Phi_{2}
+event content :: name: DeltaPhi3; type: Float_t; label: #Delta#Phi_{3}
+
+# selection values
+
+event content :: name: muIso; type: Int_t
+event content :: name: muReco; type: Int_t
+event content :: name: muAcc; type: Int_t
+
+#weights
+event content :: name: Weight; type: Float_t
+
+#prediction
+
+event content :: name: muIsoWeight; type: Float_t
+event content :: name: muRecoWeight; type: Float_t
+event content :: name: muAccWeight; type: Float_t
+
+event content :: name: selectedIDIsoMuonsNum; type: Int_t
+event content :: name: selectedIDIsoElectronsNum; type: Int_t
+
+#############################################################################################################
+# Specify the data source and label the type of data
+
+
+dataset :: label: MuExIso; type: mc; file:/afs/desy.de/user/a/adraeger/xxl-af-cms/2015/2015_RA2/ll_macros/Expectation.root ; tree: LostLeptonExpectation; weight: Weight
+dataset :: label: MuExReco; type: mc; file:/afs/desy.de/user/a/adraeger/xxl-af-cms/2015/2015_RA2/ll_macros/Expectation.root ; tree: LostLeptonExpectation; weight: Weight
+dataset :: label: MuExAcc; type: mc; file:/afs/desy.de/user/a/adraeger/xxl-af-cms/2015/2015_RA2/ll_macros/Expectation.root ; tree: LostLeptonExpectation; weight: Weight
+
+dataset :: label: MuCSPrIso; type: mcprediction; file:/afs/desy.de/user/a/adraeger/xxl-af-cms/2015/2015_RA2/ll_macros/Prediction.root  ; tree: LostLeptonPrediction; weight: muIsoWeight
+dataset :: label: MuCSPrReco; type: mcprediction; file:/afs/desy.de/user/a/adraeger/xxl-af-cms/2015/2015_RA2/ll_macros/Prediction.root  ; tree: LostLeptonPrediction; weight: muRecoWeight
+dataset :: label: MuCSPrAcc; type: mcprediction; file:/afs/desy.de/user/a/adraeger/xxl-af-cms/2015/2015_RA2/ll_macros/Prediction.root  ; tree: LostLeptonPrediction; weight: muAccWeight
+#dataset :: label: MuCSPrIso; type: mcprediction; file:/nfs/dust/cms/user/adraeger/phys14/mc/lostlepton/Prediction.root  ; tree: LostLeptonPrediction; weight: muIsoWeight
+
+
+
+
+#############################################################################################################
+#special selection
+selection :: label: Baseline; cuts: DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + NJets > 2.1 + MHT > 200 + HT > 500 +   muIso < 0.5 (MuExIso) + muReco <0.5(MuExReco) + muAcc < 0.5(MuExAcc) + MTW < 100 ( MuCSPrIso, MuCSPrReco, MuCSPrAcc) + selectedIDIsoMuonsNum > 0.5 ( MuCSPrIso, MuCSPrReco, MuCSPrAcc)+  selectedIDIsoMuonsNum < 1.5 ( MuCSPrIso, MuCSPrReco, MuCSPrAcc) + selectedIDIsoElectronsNum < 0.5 ( MuCSPrIso, MuCSPrReco, MuCSPrAcc) + muIsoWeight < 10 (MuCSPrIso, MuCSPrReco, MuCSPrAcc)
+
+
+#############################################################################################################
+
+
+
+plot style :: dataset: MuCSPrIso; plot label: Pred #mu CS; color: kBlue+1
+plot style :: dataset: MuExIso; plot label: t#bar{t} W#rightarrowl#nu+jets #mu Iso; marker: 10; color: 1
+
+plot style :: dataset: MuCSPrReco; plot label: Pred #mu CS; color: kBlue+1
+plot style :: dataset: MuExReco; plot label: t#bar{t} W#rightarrowl#nu+jets #mu Reco; marker: 10; color: 1
+
+plot style :: dataset: MuCSPrAcc; plot label: Pred #mu CS; color: kBlue+1
+plot style :: dataset: MuExAcc; plot label: t#bar{t} W#rightarrowl#nu+jets #mu Acc; marker: 10; color: 1
+
+#############################################################################################################
+
+
+plot :: variable: HT; data: MuExIso; background: MuCSPrIso; histogram: 25, 500, 3000, log
+plot :: variable: MHT; data: MuExIso; background: MuCSPrIso; histogram: 24, 100, 1300, log
+plot :: variable: MET; data: MuExIso; background: MuCSPrIso; histogram: 24, 100, 1300, log
+plot :: variable: NJets; data: MuExIso; background: MuCSPrIso; histogram: 10, 3, 13, log
+plot :: variable: BTags; data: MuExIso; background: MuCSPrIso; histogram: 5, 0, 5, log
+plot :: variable: MTW; data: MuExIso; background: MuCSPrIso; histogram: 40, 0, 200, log
+plot :: variable: NVtx; data: MuExIso; background: MuCSPrIso;  histogram: 25, -0.5, 49.5, log
+
+
+plot :: variable: HT; data: MuExReco; background: MuCSPrReco; histogram: 25, 500, 3000, log
+plot :: variable: MHT; data: MuExReco; background: MuCSPrReco; histogram: 24, 100, 1300, log
+plot :: variable: MET; data: MuExReco; background: MuCSPrReco; histogram: 24, 100, 1300, log
+plot :: variable: NJets; data: MuExReco; background: MuCSPrReco; histogram: 10, 3, 13, log
+plot :: variable: BTags; data: MuExReco; background: MuCSPrReco; histogram: 5, 0, 5, log
+plot :: variable: MTW; data: MuExReco; background: MuCSPrReco; histogram: 40, 0, 200, log
+plot :: variable: NVtx; data: MuExReco; background: MuCSPrReco;  histogram: 25, -0.5, 49.5, log
+
+plot :: variable: HT; data: MuExAcc; background: MuCSPrAcc; histogram: 25, 500, 3000, log
+plot :: variable: MHT; data: MuExAcc; background: MuCSPrAcc; histogram: 24, 100, 1300, log
+plot :: variable: MET; data: MuExAcc; background: MuCSPrAcc; histogram: 24, 100, 1300, log
+plot :: variable: NJets; data: MuExAcc; background: MuCSPrAcc; histogram: 10, 3, 13, log
+plot :: variable: BTags; data: MuExAcc; background: MuCSPrAcc; histogram: 5, 0, 5, log
+plot :: variable: MTW; data: MuExAcc; background: MuCSPrAcc; histogram: 40, 0, 200, log
+plot :: variable: NVtx; data: MuExAcc; background: MuCSPrAcc;  histogram: 25, -0.5, 49.5, log

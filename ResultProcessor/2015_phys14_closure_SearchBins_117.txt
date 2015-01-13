@@ -1,0 +1,274 @@
+# Specify global parameters
+global :: id: Closure
+global :: lumi: 5
+global :: publication status: Preliminary
+global :: output formats: eps, pdf
+style :: plot yields: true 
+
+
+# Specify the variables that are read from the ntuple and their type
+event content :: name: HT; type: Float_t; label: H_{T}; unit: GeV
+event content :: name: MHT; type: Float_t; label: #slash{H}_{T}; unit: GeV
+event content :: name: MET; type: Float_t; label: #slash{E}_{T}; unit: GeV
+event content :: name: NJets; type: Int_t; label: N_{Jets}
+event content :: name: BTags; type: Int_t; label: BTags
+event content :: name: NVtx; type: UShort_t; label: N(Vtx)
+event content :: name: MTW; type: Float_t; label: M_{T}(w)
+
+event content :: name: DeltaPhi1; type: Float_t; label: #Delta#Phi_{1}
+event content :: name: DeltaPhi2; type: Float_t; label: #Delta#Phi_{2}
+event content :: name: DeltaPhi3; type: Float_t; label: #Delta#Phi_{3}
+
+# selection values
+event content :: name: Expectation; type: Int_t
+
+#weights
+event content :: name: Weight; type: Float_t
+
+#prediction
+#event content :: name: muIsoWeight; type: Float_t
+event content :: name: totalPrediction; type: Float_t
+event content :: name: totalPredictionMTW; type: Float_t
+event content :: name: totalWeightMTWDiLep; type: Float_t
+event content :: name: totalWeightMTWDiLepBTag; type: Float_t
+#expectation
+event content :: name: RecoIsoElecNum; type: Int_t
+event content :: name: RecoIsoMuonNum; type: Int_t
+#event content :: name: MuIsoPassed; type: UShort_t
+#event content :: name: TotalPassed; type: UShort_t
+#event content :: name: ElecIsoNum; type: UShort_t
+#event content :: name: MuIsoNum; type: UShort_t
+#############################################################################################################
+# Specify the data source and label the type of data
+
+
+
+
+dataset :: label: MCEx; type: mc; file:/nfs/dust/cms/user/adraeger/phys14/mc/lostlepton/Expectation.root ; tree: LostLeptonExpectation; weight: Weight
+
+dataset :: label: MCPrMTWDiLep; type: mcprediction; file:/nfs/dust/cms/user/adraeger/phys14/mc/lostlepton/Prediction.root  ; tree: LostLeptonPrediction; weight: totalWeightMTWDiLep
+dataset :: label: MCMuonCS; type: mcprediction; file:/nfs/dust/cms/user/adraeger/phys14/mc/lostlepton/Prediction.root  ; tree: LostLeptonPrediction; weight: WeightProducer
+dataset :: label: MCElecCS; type: mcprediction; file:/nfs/dust/cms/user/adraeger/phys14/mc/lostlepton/Expectation.root  ; tree: LostLeptonExpectation; weight: WeightProducer
+
+
+
+
+#############################################################################################################
+#special selection
+selection :: label: csa_Baseline; cuts: Expectation < 1.5 (MCEx) + Expectation > 0.5 (MCEx) + NJets > 2.1 + MHT > 100 + HT > 500   + MTW < 100 (MCPrMTWDiLep, MCMuonCS) +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + RecoIsoElecNum >0.5 (MCElecCS) + RecoIsoElecNum <1.5(MCElecCS) + RecoIsoMuonNum <0.5 (MCElecCS)
+
+# classic RA2/b search bins
+
+
+selection :: label: BTag_0_NJet_3-5__HT_0500-0800__MHT_200-300;    cuts: BTags<0.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 500 < HT < 800   + 200 < MHT < 300
+selection :: label: BTag_0_NJet_3-5__HT_0500-0800__MHT_300-450;    cuts: BTags<0.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 500 < HT < 800   + 300 < MHT < 450
+selection :: label: BTag_0_NJet_3-5__HT_0500-0800__MHT_450-600;    cuts: BTags<0.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 500 < HT < 800   + 450 < MHT < 600
+selection :: label: BTag_0_NJet_3-5__HT_0500-0800__MHT_600-Inf;    cuts: BTags<0.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 500 < HT < 800   + 600 < MHT < 9999      
+
+selection :: label: BTag_0_NJet_3-5__HT_0800-1000__MHT_200-300;    cuts: BTags<0.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 800 < HT < 1000  + 200 < MHT < 300
+selection :: label: BTag_0_NJet_3-5__HT_0800-1000__MHT_300-450;    cuts: BTags<0.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 800 < HT < 1000  + 300 < MHT < 450
+selection :: label: BTag_0_NJet_3-5__HT_0800-1000__MHT_450-600;    cuts: BTags<0.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 800 < HT < 1000  + 450 < MHT < 600
+selection :: label: BTag_0_NJet_3-5__HT_0800-1000__MHT_600-Inf;    cuts: BTags<0.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 800 < HT < 1000  + 600 < MHT < 9999      
+
+selection :: label: BTag_0_NJet_3-5__HT_1000-1250__MHT_200-300;    cuts: BTags<0.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 1000 < HT < 1250 + 200 < MHT < 300 
+selection :: label: BTag_0_NJet_3-5__HT_1000-1250__MHT_300-450;    cuts: BTags<0.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 1000 < HT < 1250 + 300 < MHT < 450 
+selection :: label: BTag_0_NJet_3-5__HT_1000-1250__MHT_450-600;    cuts: BTags<0.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 1000 < HT < 1250 + 450 < MHT < 600 
+selection :: label: BTag_0_NJet_3-5__HT_1000-1250__MHT_600-Inf;    cuts: BTags<0.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 1000 < HT < 1250 + 600 < MHT < 9999 
+
+selection :: label: BTag_0_NJet_3-5__HT_1250-1500__MHT_200-300;    cuts: BTags<0.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 1250 < HT < 1500 + 200 < MHT < 300 
+selection :: label: BTag_0_NJet_3-5__HT_1250-1500__MHT_300-450;    cuts: BTags<0.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 1250 < HT < 1500 + 300 < MHT < 450  
+selection :: label: BTag_0_NJet_3-5__HT_1250-1500__MHT_450-Inf;    cuts: BTags<0.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 1250 < HT < 1500 + 450 < MHT < 9999
+
+selection :: label: BTag_0_NJet_3-5__HT_1500-Inf__MHT_200-300;     cuts: BTags<0.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6  + 1500 < HT < 9999 + 200 < MHT < 300
+selection :: label: BTag_0_NJet_3-5__HT_1500-Inf__MHT_300-Inf;     cuts: BTags<0.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6  + 1500 < HT < 9999 + 300 < MHT < 9999      
+
+
+selection :: label: BTag_0_NJet_6-7__HT_0500-0800__MHT_200-300;    cuts: BTags<0.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 5 < NJets < 8   + 500 < HT < 800   + 200 < MHT < 300
+selection :: label: BTag_0_NJet_6-7__HT_0500-0800__MHT_300-450;    cuts: BTags<0.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 5 < NJets < 8   + 500 < HT < 800   + 300 < MHT < 450
+selection :: label: BTag_0_NJet_6-7__HT_0500-0800__MHT_450-Inf;    cuts: BTags<0.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 5 < NJets < 8   + 500 < HT < 800   + 450 < MHT < 9999
+
+selection :: label: BTag_0_NJet_6-7__HT_0800-1000__MHT_200-300;    cuts: BTags<0.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 5 < NJets < 8   + 800 < HT < 1000  + 200 < MHT < 300
+selection :: label: BTag_0_NJet_6-7__HT_0800-1000__MHT_300-450;    cuts: BTags<0.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 5 < NJets < 8   + 800 < HT < 1000  + 300 < MHT < 450
+selection :: label: BTag_0_NJet_6-7__HT_0800-1000__MHT_450-Inf;    cuts: BTags<0.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 5 < NJets < 8   + 800 < HT < 1000  + 450 < MHT < 9999
+
+selection :: label: BTag_0_NJet_6-7__HT_1000-1250__MHT_200-300;    cuts: BTags<0.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 5 < NJets < 8   + 1000 < HT < 1250 + 200 < MHT < 300 
+selection :: label: BTag_0_NJet_6-7__HT_1000-1250__MHT_300-450;    cuts: BTags<0.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 5 < NJets < 8   + 1000 < HT < 1250 + 300 < MHT < 450 
+selection :: label: BTag_0_NJet_6-7__HT_1000-1250__MHT_450-Inf;    cuts: BTags<0.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 5 < NJets < 8   + 1000 < HT < 1250 + 450 < MHT < 9999 
+
+selection :: label: BTag_0_NJet_6-7__HT_1250-1500__MHT_200-300;    cuts: BTags<0.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 5 < NJets < 8   + 1250 < HT < 1500 + 200 < MHT < 300 
+selection :: label: BTag_0_NJet_6-7__HT_1250-1500__MHT_300-450;    cuts: BTags<0.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 5 < NJets < 8   + 1250 < HT < 1500 + 300 < MHT < 450  
+selection :: label: BTag_0_NJet_6-7__HT_1250-1500__MHT_450-Inf;    cuts: BTags<0.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 5 < NJets < 8   + 1250 < HT < 1500 + 450 < MHT < 9999      
+
+selection :: label: BTag_0_NJet_6-7__HT_1500-Inf__MHT_200-300;    cuts: BTags<0.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 5 < NJets < 8   + 1500 < HT < 9999 + 200 < MHT < 300
+selection :: label: BTag_0_NJet_6-7__HT_1500-Inf__MHT_300-Inf;    cuts: BTags<0.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 5 < NJets < 8   + 1500 < HT < 9999 + 300 < MHT < 9999
+
+
+selection :: label: BTag_0_NJet_8-Inf__HT_0500-0800__MHT_200-Inf;    cuts: BTags<0.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + NJets > 7   + 500 < HT < 800   + 200 < MHT < 9999
+
+selection :: label: BTag_0_NJet_8-Inf__HT_0800-1000__MHT_200-Inf;    cuts: BTags<0.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + NJets > 7   + 800 < HT < 1000  + 200 < MHT < 9999
+
+selection :: label: BTag_0_NJet_8-Inf__HT_1000-1250__MHT_200-Inf;    cuts: BTags<0.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + NJets > 7   + 1000 < HT < 1250 + 200 < MHT < 9999
+
+selection :: label: BTag_0_NJet_8-Inf__HT_1250-1500__MHT_200-Inf;    cuts: BTags<0.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + NJets > 7   + 1250 < HT < 1500 + 200 < MHT < 9999
+
+selection :: label: BTag_0_NJet_8-Inf__HT_1500-Inf__MHT_200-Inf;     cuts: BTags<0.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + NJets > 7   + HT > 1500        + 200 < MHT < 9999
+
+
+
+
+selection :: label: BTag_1_NJet_3-5__HT_0500-0800__MHT_200-300;    cuts: BTags>0.5 + BTags<1.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 500 < HT < 800   + 200 < MHT < 300
+selection :: label: BTag_1_NJet_3-5__HT_0500-0800__MHT_300-450;    cuts: BTags>0.5 + BTags<1.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 500 < HT < 800   + 300 < MHT < 450
+selection :: label: BTag_1_NJet_3-5__HT_0500-0800__MHT_450-600;    cuts: BTags>0.5 + BTags<1.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 500 < HT < 800   + 450 < MHT < 600
+selection :: label: BTag_1_NJet_3-5__HT_0500-0800__MHT_600-Inf;    cuts: BTags>0.5 + BTags<1.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 500 < HT < 800   + 600 < MHT < 9999      
+
+selection :: label: BTag_1_NJet_3-5__HT_0800-1000__MHT_200-300;    cuts: BTags>0.5 + BTags<1.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 800 < HT < 1000  + 200 < MHT < 300
+selection :: label: BTag_1_NJet_3-5__HT_0800-1000__MHT_300-450;    cuts: BTags>0.5 + BTags<1.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 800 < HT < 1000  + 300 < MHT < 450
+selection :: label: BTag_1_NJet_3-5__HT_0800-1000__MHT_450-600;    cuts: BTags>0.5 + BTags<1.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 800 < HT < 1000  + 450 < MHT < 600
+selection :: label: BTag_1_NJet_3-5__HT_0800-1000__MHT_600-Inf;    cuts: BTags>0.5 + BTags<1.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 800 < HT < 1000  + 600 < MHT < 9999      
+
+selection :: label: BTag_1_NJet_3-5__HT_1000-1250__MHT_200-300;    cuts: BTags>0.5 + BTags<1.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 1000 < HT < 1250 + 200 < MHT < 300 
+selection :: label: BTag_1_NJet_3-5__HT_1000-1250__MHT_300-450;    cuts: BTags>0.5 + BTags<1.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 1000 < HT < 1250 + 300 < MHT < 450 
+selection :: label: BTag_1_NJet_3-5__HT_1000-1250__MHT_450-600;    cuts: BTags>0.5 + BTags<1.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 1000 < HT < 1250 + 450 < MHT < 600 
+selection :: label: BTag_1_NJet_3-5__HT_1000-1250__MHT_600-Inf;    cuts: BTags>0.5 + BTags<1.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 1000 < HT < 1250 + 600 < MHT < 9999 
+
+selection :: label: BTag_1_NJet_3-5__HT_1250-1500__MHT_200-300;    cuts: BTags>0.5 + BTags<1.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 1250 < HT < 1500 + 200 < MHT < 300 
+selection :: label: BTag_1_NJet_3-5__HT_1250-1500__MHT_300-450;    cuts: BTags>0.5 + BTags<1.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 1250 < HT < 1500 + 300 < MHT < 450  
+selection :: label: BTag_1_NJet_3-5__HT_1250-1500__MHT_450-Inf;    cuts: BTags>0.5 + BTags<1.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 1250 < HT < 1500 + 450 < MHT < 9999
+
+selection :: label: BTag_1_NJet_3-5__HT_1500-Inf__MHT_200-300;     cuts: BTags>0.5 + BTags<1.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6  + 1500 < HT < 9999 + 200 < MHT < 300
+selection :: label: BTag_1_NJet_3-5__HT_1500-Inf__MHT_300-Inf;     cuts: BTags>0.5 + BTags<1.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6  + 1500 < HT < 9999 + 300 < MHT < 9999      
+
+
+selection :: label: BTag_1_NJet_6-7__HT_0500-0800__MHT_200-300;    cuts: BTags>0.5 + BTags<1.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 5 < NJets < 8   + 500 < HT < 800   + 200 < MHT < 300
+selection :: label: BTag_1_NJet_6-7__HT_0500-0800__MHT_300-450;    cuts: BTags>0.5 + BTags<1.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 5 < NJets < 8   + 500 < HT < 800   + 300 < MHT < 450
+selection :: label: BTag_1_NJet_6-7__HT_0500-0800__MHT_450-Inf;    cuts: BTags>0.5 + BTags<1.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 5 < NJets < 8   + 500 < HT < 800   + 450 < MHT < 9999
+
+selection :: label: BTag_1_NJet_6-7__HT_0800-1000__MHT_200-300;    cuts: BTags>0.5 + BTags<1.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 5 < NJets < 8   + 800 < HT < 1000  + 200 < MHT < 300
+selection :: label: BTag_1_NJet_6-7__HT_0800-1000__MHT_300-450;    cuts: BTags>0.5 + BTags<1.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 5 < NJets < 8   + 800 < HT < 1000  + 300 < MHT < 450
+selection :: label: BTag_1_NJet_6-7__HT_0800-1000__MHT_450-Inf;    cuts: BTags>0.5 + BTags<1.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 5 < NJets < 8   + 800 < HT < 1000  + 450 < MHT < 9999
+
+selection :: label: BTag_1_NJet_6-7__HT_1000-1250__MHT_200-300;    cuts: BTags>0.5 + BTags<1.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 5 < NJets < 8   + 1000 < HT < 1250 + 200 < MHT < 300 
+selection :: label: BTag_1_NJet_6-7__HT_1000-1250__MHT_300-450;    cuts: BTags>0.5 + BTags<1.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 5 < NJets < 8   + 1000 < HT < 1250 + 300 < MHT < 450 
+selection :: label: BTag_1_NJet_6-7__HT_1000-1250__MHT_450-Inf;    cuts: BTags>0.5 + BTags<1.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 5 < NJets < 8   + 1000 < HT < 1250 + 450 < MHT < 9999 
+
+selection :: label: BTag_1_NJet_6-7__HT_1250-1500__MHT_200-300;    cuts: BTags>0.5 + BTags<1.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 5 < NJets < 8   + 1250 < HT < 1500 + 200 < MHT < 300 
+selection :: label: BTag_1_NJet_6-7__HT_1250-1500__MHT_300-450;    cuts: BTags>0.5 + BTags<1.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 5 < NJets < 8   + 1250 < HT < 1500 + 300 < MHT < 450  
+selection :: label: BTag_1_NJet_6-7__HT_1250-1500__MHT_450-Inf;    cuts: BTags>0.5 + BTags<1.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 5 < NJets < 8   + 1250 < HT < 1500 + 450 < MHT < 9999      
+
+selection :: label: BTag_1_NJet_6-7__HT_1500-Inf__MHT_200-300;    cuts: BTags>0.5 + BTags<1.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 5 < NJets < 8   + 1500 < HT < 9999 + 200 < MHT < 300
+selection :: label: BTag_1_NJet_6-7__HT_1500-Inf__MHT_300-Inf;    cuts: BTags>0.5 + BTags<1.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 5 < NJets < 8   + 1500 < HT < 9999 + 300 < MHT < 9999
+
+
+selection :: label: BTag_1_NJet_8-Inf__HT_0500-0800__MHT_200-Inf;    cuts: BTags>0.5 + BTags<1.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + NJets > 7   + 500 < HT < 800   + 200 < MHT < 9999
+
+selection :: label: BTag_1_NJet_8-Inf__HT_0800-1000__MHT_200-Inf;    cuts: BTags>0.5 + BTags<1.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + NJets > 7   + 800 < HT < 1000  + 200 < MHT < 9999
+
+selection :: label: BTag_1_NJet_8-Inf__HT_1000-1250__MHT_200-Inf;    cuts: BTags>0.5 + BTags<1.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + NJets > 7   + 1000 < HT < 1250 + 200 < MHT < 9999
+
+selection :: label: BTag_1_NJet_8-Inf__HT_1250-1500__MHT_200-Inf;    cuts: BTags>0.5 + BTags<1.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + NJets > 7   + 1250 < HT < 1500 + 200 < MHT < 9999
+
+selection :: label: BTag_1_NJet_8-Inf__HT_1500-Inf__MHT_200-Inf;     cuts: BTags>0.5 + BTags<1.5 + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + NJets > 7   + HT > 1500        + 200 < MHT < 9999
+
+
+
+selection :: label: BTag_2_Inf_NJet_3-5__HT_0500-0800__MHT_200-300;    cuts: BTags>1.5  + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 500 < HT < 800   + 200 < MHT < 300
+selection :: label: BTag_2_Inf_NJet_3-5__HT_0500-0800__MHT_300-450;    cuts: BTags>1.5  + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 500 < HT < 800   + 300 < MHT < 450
+selection :: label: BTag_2_Inf_NJet_3-5__HT_0500-0800__MHT_450-600;    cuts: BTags>1.5  + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 500 < HT < 800   + 450 < MHT < 600
+selection :: label: BTag_2_Inf_NJet_3-5__HT_0500-0800__MHT_600-Inf;    cuts: BTags>1.5  + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 500 < HT < 800   + 600 < MHT < 9999      
+
+selection :: label: BTag_2_Inf_NJet_3-5__HT_0800-1000__MHT_200-300;    cuts: BTags>1.5  + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 800 < HT < 1000  + 200 < MHT < 300
+selection :: label: BTag_2_Inf_NJet_3-5__HT_0800-1000__MHT_300-450;    cuts: BTags>1.5  + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 800 < HT < 1000  + 300 < MHT < 450
+selection :: label: BTag_2_Inf_NJet_3-5__HT_0800-1000__MHT_450-600;    cuts: BTags>1.5  + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 800 < HT < 1000  + 450 < MHT < 600
+selection :: label: BTag_2_Inf_NJet_3-5__HT_0800-1000__MHT_600-Inf;    cuts: BTags>1.5  + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 800 < HT < 1000  + 600 < MHT < 9999      
+
+selection :: label: BTag_2_Inf_NJet_3-5__HT_1000-1250__MHT_200-300;    cuts: BTags>1.5  + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 1000 < HT < 1250 + 200 < MHT < 300 
+selection :: label: BTag_2_Inf_NJet_3-5__HT_1000-1250__MHT_300-450;    cuts: BTags>1.5  + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 1000 < HT < 1250 + 300 < MHT < 450 
+selection :: label: BTag_2_Inf_NJet_3-5__HT_1000-1250__MHT_450-600;    cuts: BTags>1.5  + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 1000 < HT < 1250 + 450 < MHT < 600 
+selection :: label: BTag_2_Inf_NJet_3-5__HT_1000-1250__MHT_600-Inf;    cuts: BTags>1.5  + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 1000 < HT < 1250 + 600 < MHT < 9999 
+
+selection :: label: BTag_2_Inf_NJet_3-5__HT_1250-1500__MHT_200-300;    cuts: BTags>1.5  + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 1250 < HT < 1500 + 200 < MHT < 300 
+selection :: label: BTag_2_Inf_NJet_3-5__HT_1250-1500__MHT_300-450;    cuts: BTags>1.5  + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 1250 < HT < 1500 + 300 < MHT < 450  
+selection :: label: BTag_2_Inf_NJet_3-5__HT_1250-1500__MHT_450-Inf;    cuts: BTags>1.5  + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6   + 1250 < HT < 1500 + 450 < MHT < 9999
+
+selection :: label: BTag_2_Inf_NJet_3-5__HT_1500-Inf__MHT_200-300;     cuts: BTags>1.5  + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6  + 1500 < HT < 9999 + 200 < MHT < 300
+selection :: label: BTag_2_Inf_NJet_3-5__HT_1500-Inf__MHT_300-Inf;     cuts: BTags>1.5  + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 2 < NJets < 6  + 1500 < HT < 9999 + 300 < MHT < 9999      
+
+
+selection :: label: BTag_2_Inf_NJet_6-7__HT_0500-0800__MHT_200-300;    cuts: BTags>1.5  + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 5 < NJets < 8   + 500 < HT < 800   + 200 < MHT < 300
+selection :: label: BTag_2_Inf_NJet_6-7__HT_0500-0800__MHT_300-450;    cuts: BTags>1.5  + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 5 < NJets < 8   + 500 < HT < 800   + 300 < MHT < 450
+selection :: label: BTag_2_Inf_NJet_6-7__HT_0500-0800__MHT_450-Inf;    cuts: BTags>1.5  + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 5 < NJets < 8   + 500 < HT < 800   + 450 < MHT < 9999
+
+selection :: label: BTag_2_Inf_NJet_6-7__HT_0800-1000__MHT_200-300;    cuts: BTags>1.5  + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 5 < NJets < 8   + 800 < HT < 1000  + 200 < MHT < 300
+selection :: label: BTag_2_Inf_NJet_6-7__HT_0800-1000__MHT_300-450;    cuts: BTags>1.5  + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 5 < NJets < 8   + 800 < HT < 1000  + 300 < MHT < 450
+selection :: label: BTag_2_Inf_NJet_6-7__HT_0800-1000__MHT_450-Inf;    cuts: BTags>1.5  + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 5 < NJets < 8   + 800 < HT < 1000  + 450 < MHT < 9999
+
+selection :: label: BTag_2_Inf_NJet_6-7__HT_1000-1250__MHT_200-300;    cuts: BTags>1.5  + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 5 < NJets < 8   + 1000 < HT < 1250 + 200 < MHT < 300 
+selection :: label: BTag_2_Inf_NJet_6-7__HT_1000-1250__MHT_300-450;    cuts: BTags>1.5  + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 5 < NJets < 8   + 1000 < HT < 1250 + 300 < MHT < 450 
+selection :: label: BTag_2_Inf_NJet_6-7__HT_1000-1250__MHT_450-Inf;    cuts: BTags>1.5  + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 5 < NJets < 8   + 1000 < HT < 1250 + 450 < MHT < 9999 
+
+selection :: label: BTag_2_Inf_NJet_6-7__HT_1250-1500__MHT_200-300;    cuts: BTags>1.5  + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 5 < NJets < 8   + 1250 < HT < 1500 + 200 < MHT < 300 
+selection :: label: BTag_2_Inf_NJet_6-7__HT_1250-1500__MHT_300-450;    cuts: BTags>1.5  + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 5 < NJets < 8   + 1250 < HT < 1500 + 300 < MHT < 450  
+selection :: label: BTag_2_Inf_NJet_6-7__HT_1250-1500__MHT_450-Inf;    cuts: BTags>1.5  + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 5 < NJets < 8   + 1250 < HT < 1500 + 450 < MHT < 9999      
+
+selection :: label: BTag_2_Inf_NJet_6-7__HT_1500-Inf__MHT_200-300;    cuts: BTags>1.5  + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 5 < NJets < 8   + 1500 < HT < 9999 + 200 < MHT < 300
+selection :: label: BTag_2_Inf_NJet_6-7__HT_1500-Inf__MHT_300-Inf;    cuts: BTags>1.5  + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + 5 < NJets < 8   + 1500 < HT < 9999 + 300 < MHT < 9999
+
+
+selection :: label: BTag_2_Inf_NJet_8-Inf__HT_0500-0800__MHT_200-Inf;    cuts: BTags>1.5  + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + NJets > 7   + 500 < HT < 800   + 200 < MHT < 9999
+
+selection :: label: BTag_2_Inf_NJet_8-Inf__HT_0800-1000__MHT_200-Inf;    cuts: BTags>1.5  + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + NJets > 7   + 800 < HT < 1000  + 200 < MHT < 9999
+
+selection :: label: BTag_2_Inf_NJet_8-Inf__HT_1000-1250__MHT_200-Inf;    cuts: BTags>1.5  + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + NJets > 7   + 1000 < HT < 1250 + 200 < MHT < 9999
+
+selection :: label: BTag_2_Inf_NJet_8-Inf__HT_1250-1500__MHT_200-Inf;    cuts: BTags>1.5  + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + NJets > 7   + 1250 < HT < 1500 + 200 < MHT < 9999
+
+selection :: label: BTag_2_Inf_NJet_8-Inf__HT_1500-Inf__MHT_200-Inf;     cuts: BTags>1.5  + csa_Baseline +  DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + NJets > 7   + HT > 1500        + 200 < MHT < 9999
+
+
+
+
+#############################################################################################################
+
+#plot style :: dataset: MCPr; plot label: Prediction from MC(NoMTW); marker: 10; color: 1
+#plot style :: dataset: MCPrMTW; plot label: Prediction from MC; marker: 10; color: 1
+plot style :: dataset: MCPrMTWDiLep; plot label: Prediction; marker: 10; color: 1
+plot style :: dataset: MCMuonCS; plot label: MCMuonCS; marker: 10; color: 1
+plot style :: dataset: MCEx; plot label: t#bar{t} W#rightarrowl#nu+jets; color: kBlue+1
+plot style :: dataset: MCElecCS; plot label: MCElecCS; marker: 12; color: 1
+
+#############################################################################################################
+
+#plot :: variable: HT; data: MCPr; background: MCEx; histogram: 25, 500, 3000, log
+#plot :: variable: MHT; data: MCPr; background: MCEx; histogram: 22, 200, 1300, log
+#plot :: variable: MET; data: MCPr; background: MCEx; histogram: 22, 200, 1300, log
+#plot :: variable: NJets; data: MCPr; background: MCEx; histogram: 10, 3, 13, log
+#plot :: variable: BTags; data: MCPr; background: MCEx; histogram: 5, 0, 5, log
+#plot :: variable: MTW; data: MCPr; background: MCEx; histogram: 40, 0, 200, log
+#plot :: variable: NVtx; data: MCPr; background: MCEx;  histogram: 25, -0.5, 49.5, log
+
+#plot :: variable: HT; data: MCPrMTW; background: MCEx; histogram: 25, 500, 3000, log
+#plot :: variable: MHT; data: MCPrMTW; background: MCEx; histogram: 22, 200, 1300, log
+#plot :: variable: MET; data: MCPrMTW; background: MCEx; histogram: 22, 200, 1300, log
+#plot :: variable: NJets; data: MCPrMTW; background: MCEx; histogram: 10, 3, 13, log
+#plot :: variable: BTags; data: MCPrMTW; background: MCEx; histogram: 5, 0, 5, log
+#plot :: variable: MTW; data: MCPrMTW; background: MCEx; histogram: 40, 0, 200, log
+#plot :: variable: NVtx; data: MCPrMTW; background: MCEx;  histogram: 25, -0.5, 49.5, log
+
+plot :: variable: HT; data: MCPrMTWDiLep; background: MCEx; histogram: 25, 500, 3000, log
+plot :: variable: MHT; data: MCPrMTWDiLep; background: MCEx; histogram: 24, 100, 1300, log
+plot :: variable: MET; data: MCPrMTWDiLep; background: MCEx; histogram: 24, 100, 1300, log
+plot :: variable: NJets; data: MCPrMTWDiLep; background: MCEx; histogram: 10, 3, 13, log
+plot :: variable: BTags; data: MCPrMTWDiLep; background: MCEx; histogram: 5, 0, 5, log
+plot :: variable: MTW; data: MCPrMTWDiLep; background: MCEx; histogram: 40, 0, 200, log
+plot :: variable: NVtx; data: MCPrMTWDiLep; background: MCEx;  histogram: 25, -0.5, 49.5, log
+
+plot :: variable: HT; data: MCMuonCS; background: MCEx; histogram: 25, 500, 3000, log
+plot :: variable: MHT; data: MCMuonCS; background: MCEx; histogram: 24, 100, 1300, log
+plot :: variable: MET; data: MCMuonCS; background: MCEx; histogram: 24, 100, 1300, log
+plot :: variable: NJets; data: MCMuonCS; background: MCEx; histogram: 10, 3, 13, log
+plot :: variable: BTags; data: MCMuonCS; background: MCEx; histogram: 5, 0, 5, log
+plot :: variable: MTW; data: MCMuonCS; background: MCEx; histogram: 40, 0, 200, log
+plot :: variable: NVtx; data: MCMuonCS; background: MCEx;  histogram: 25, -0.5, 49.5, log
+
+plot :: variable: HT; data: MCElecCS; background: MCEx; histogram: 25, 500, 3000, log
+

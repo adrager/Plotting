@@ -1,0 +1,23 @@
+void LostLeptonTH1Creator()
+{
+
+        TChain* c = new TChain(prTree);
+        c->Add("/scratch/adraeger/data.root");
+
+
+        Float_t HT =0;
+        c->SetBranchAddress("HT",&HT);
+        Float_t MHT =0;
+        c->SetBranchAddress("MHT",&MHT);
+        UShort_t NJets =0;
+        c->SetBranchAddress("NJets",&NJets);
+        UShort_t NVtx =0;
+        c->SetBranchAddress("NVtx",&NVtx);
+        Float_t MTW=0;
+        c->SetBranchAddress("MTW",&MTW);
+        for(int ii = 0; ii < c->GetEntries(); ++ii)
+{
+}
+
+
+}
