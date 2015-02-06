@@ -1,6 +1,6 @@
 # Specify global parameters
-global :: id: Elec_Closure_test
-global :: lumi: 5
+global :: id: Elec_Closure
+global :: lumi: 4
 global :: publication status: Preliminary
 global :: output formats:  pdf
 style :: plot yields: true 
@@ -15,9 +15,6 @@ event content :: name: BTags; type: Int_t; label: BTags
 event content :: name: NVtx; type: UShort_t; label: N(Vtx)
 event content :: name: MTW; type: Float_t; label: M_{T}(w)
 
-event content :: name: DeltaPhi1; type: Float_t; label: #Delta#Phi_{1}
-event content :: name: DeltaPhi2; type: Float_t; label: #Delta#Phi_{2}
-event content :: name: DeltaPhi3; type: Float_t; label: #Delta#Phi_{3}
 
 # selection values
 
@@ -59,7 +56,7 @@ dataset :: label: ElecCSPrAcc; type: mcprediction; file:/afs/desy.de/user/a/adra
 
 #############################################################################################################
 #special selection
-selection :: label: Baseline; cuts: DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + NJets > 2.1 + MHT > 200 + HT > 500 +   elecIso < 0.5 (ElecExIso) + elecReco <0.5(ElecExReco) + elecAcc < 0.5(ElecExAcc) + MTW < 100 ( MuCSPrIso, MuCSPrReco, MuCSPrAcc , ElecCSPrIso, ElecCSPrReco, ElecCSPrAcc) + selectedIDIsoMuonsNum > 0.5 ( MuCSPrIso, MuCSPrReco, MuCSPrAcc)+  selectedIDIsoMuonsNum < 1.5 ( MuCSPrIso, MuCSPrReco, MuCSPrAcc) + selectedIDIsoElectronsNum < 0.5 ( MuCSPrIso, MuCSPrReco, MuCSPrAcc) + elecIsoWeight < 10 (MuCSPrIso, MuCSPrReco, MuCSPrAcc) + selectedIDIsoMuonsNum <0.5(ElecCSPrIso, ElecCSPrReco, ElecCSPrAcc) + selectedIDIsoElectronsNum >0.5 (ElecCSPrIso, ElecCSPrReco, ElecCSPrAcc) + selectedIDIsoElectronsNum < 1.5 (ElecCSPrIso, ElecCSPrReco, ElecCSPrAcc)
+selection :: label: Baseline; cuts:  NJets > 2.1 + MHT > 200 + HT > 500 +   elecIso < 0.5 (ElecExIso) + elecReco <0.5(ElecExReco) + elecAcc < 0.5(ElecExAcc) + MTW < 100 ( MuCSPrIso, MuCSPrReco, MuCSPrAcc , ElecCSPrIso, ElecCSPrReco, ElecCSPrAcc) + selectedIDIsoMuonsNum > 0.5 ( MuCSPrIso, MuCSPrReco, MuCSPrAcc)+  selectedIDIsoMuonsNum < 1.5 ( MuCSPrIso, MuCSPrReco, MuCSPrAcc) + selectedIDIsoElectronsNum < 0.5 ( MuCSPrIso, MuCSPrReco, MuCSPrAcc) + elecIsoWeight < 10 (MuCSPrIso, MuCSPrReco, MuCSPrAcc) + selectedIDIsoMuonsNum <0.5(ElecCSPrIso, ElecCSPrReco, ElecCSPrAcc) + selectedIDIsoElectronsNum >0.5 (ElecCSPrIso, ElecCSPrReco, ElecCSPrAcc) + selectedIDIsoElectronsNum < 1.5 (ElecCSPrIso, ElecCSPrReco, ElecCSPrAcc)
 
 
 #############################################################################################################
@@ -81,52 +78,52 @@ plot style :: dataset: ElecExAcc; plot label: t#bar{t} W#rightarrowl#nu+jets e A
 #############################################################################################################
 
 
-plot :: variable: HT; data: ElecExIso; background: MuCSPrIso; histogram: 25, 500, 3000, log
-plot :: variable: MHT; data: ElecExIso; background: MuCSPrIso; histogram: 24, 100, 1300, log
-plot :: variable: MET; data: ElecExIso; background: MuCSPrIso; histogram: 24, 100, 1300, log
+plot :: variable: HT; data: ElecExIso; background: MuCSPrIso; histogram: 20, 500, 2500, log
+plot :: variable: MHT; data: ElecExIso; background: MuCSPrIso; histogram: 18, 200, 1100, log
+plot :: variable: MET; data: ElecExIso; background: MuCSPrIso; histogram: 18, 200, 1100, log
 plot :: variable: NJets; data: ElecExIso; background: MuCSPrIso; histogram: 10, 3, 13, log
 plot :: variable: BTags; data: ElecExIso; background: MuCSPrIso; histogram: 5, 0, 5, log
 plot :: variable: MTW; data: ElecExIso; background: MuCSPrIso; histogram: 40, 0, 200, log
 plot :: variable: NVtx; data: ElecExIso; background: MuCSPrIso;  histogram: 25, -0.5, 49.5, log
 
 
-plot :: variable: HT; data: ElecExReco; background: MuCSPrReco; histogram: 25, 500, 3000, log
-plot :: variable: MHT; data: ElecExReco; background: MuCSPrReco; histogram: 24, 100, 1300, log
-plot :: variable: MET; data: ElecExReco; background: MuCSPrReco; histogram: 24, 100, 1300, log
+plot :: variable: HT; data: ElecExReco; background: MuCSPrReco; histogram: 20, 500, 2500, log
+plot :: variable: MHT; data: ElecExReco; background: MuCSPrReco; histogram: 18, 200, 1100, log
+plot :: variable: MET; data: ElecExReco; background: MuCSPrReco; histogram: 18, 200, 1100, log
 plot :: variable: NJets; data: ElecExReco; background: MuCSPrReco; histogram: 10, 3, 13, log
 plot :: variable: BTags; data: ElecExReco; background: MuCSPrReco; histogram: 5, 0, 5, log
 plot :: variable: MTW; data: ElecExReco; background: MuCSPrReco; histogram: 40, 0, 200, log
 plot :: variable: NVtx; data: ElecExReco; background: MuCSPrReco;  histogram: 25, -0.5, 49.5, log
 
-plot :: variable: HT; data: ElecExAcc; background: MuCSPrAcc; histogram: 25, 500, 3000, log
-plot :: variable: MHT; data: ElecExAcc; background: MuCSPrAcc; histogram: 24, 100, 1300, log
-plot :: variable: MET; data: ElecExAcc; background: MuCSPrAcc; histogram: 24, 100, 1300, log
+plot :: variable: HT; data: ElecExAcc; background: MuCSPrAcc; histogram: 20, 500, 2500, log
+plot :: variable: MHT; data: ElecExAcc; background: MuCSPrAcc; histogram: 18, 200, 1100, log
+plot :: variable: MET; data: ElecExAcc; background: MuCSPrAcc; histogram: 18, 200, 1100, log
 plot :: variable: NJets; data: ElecExAcc; background: MuCSPrAcc; histogram: 10, 3, 13, log
 plot :: variable: BTags; data: ElecExAcc; background: MuCSPrAcc; histogram: 5, 0, 5, log
 plot :: variable: MTW; data: ElecExAcc; background: MuCSPrAcc; histogram: 40, 0, 200, log
 plot :: variable: NVtx; data: ElecExAcc; background: MuCSPrAcc;  histogram: 25, -0.5, 49.5, log
 
 
-plot :: variable: HT; data: ElecExIso; background: ElecCSPrIso; histogram: 25, 500, 3000, log
-plot :: variable: MHT; data: ElecExIso; background: ElecCSPrIso; histogram: 24, 100, 1300, log
-plot :: variable: MET; data: ElecExIso; background: ElecCSPrIso; histogram: 24, 100, 1300, log
+plot :: variable: HT; data: ElecExIso; background: ElecCSPrIso; histogram: 20, 500, 2500, log
+plot :: variable: MHT; data: ElecExIso; background: ElecCSPrIso; histogram: 18, 200, 1100, log
+plot :: variable: MET; data: ElecExIso; background: ElecCSPrIso; histogram: 18, 200, 1100, log
 plot :: variable: NJets; data: ElecExIso; background: ElecCSPrIso; histogram: 10, 3, 13, log
 plot :: variable: BTags; data: ElecExIso; background: ElecCSPrIso; histogram: 5, 0, 5, log
 plot :: variable: MTW; data: ElecExIso; background: ElecCSPrIso; histogram: 40, 0, 200, log
 plot :: variable: NVtx; data: ElecExIso; background: ElecCSPrIso;  histogram: 25, -0.5, 49.5, log
 
 
-plot :: variable: HT; data: ElecExReco; background: ElecCSPrReco; histogram: 25, 500, 3000, log
-plot :: variable: MHT; data: ElecExReco; background: ElecCSPrReco; histogram: 24, 100, 1300, log
-plot :: variable: MET; data: ElecExReco; background: ElecCSPrReco; histogram: 24, 100, 1300, log
+plot :: variable: HT; data: ElecExReco; background: ElecCSPrReco; histogram: 20, 500, 2500, log
+plot :: variable: MHT; data: ElecExReco; background: ElecCSPrReco; histogram: 18, 200, 1100, log
+plot :: variable: MET; data: ElecExReco; background: ElecCSPrReco; histogram: 18, 200, 1100, log
 plot :: variable: NJets; data: ElecExReco; background: ElecCSPrReco; histogram: 10, 3, 13, log
 plot :: variable: BTags; data: ElecExReco; background: ElecCSPrReco; histogram: 5, 0, 5, log
 plot :: variable: MTW; data: ElecExReco; background: ElecCSPrReco; histogram: 40, 0, 200, log
 plot :: variable: NVtx; data: ElecExReco; background: ElecCSPrReco;  histogram: 25, -0.5, 49.5, log
 
-plot :: variable: HT; data: ElecExAcc; background: ElecCSPrAcc; histogram: 25, 500, 3000, log
-plot :: variable: MHT; data: ElecExAcc; background: ElecCSPrAcc; histogram: 24, 100, 1300, log
-plot :: variable: MET; data: ElecExAcc; background: ElecCSPrAcc; histogram: 24, 100, 1300, log
+plot :: variable: HT; data: ElecExAcc; background: ElecCSPrAcc; histogram: 20, 500, 2500, log
+plot :: variable: MHT; data: ElecExAcc; background: ElecCSPrAcc; histogram: 18, 200, 1100, log
+plot :: variable: MET; data: ElecExAcc; background: ElecCSPrAcc; histogram: 18, 200, 1100, log
 plot :: variable: NJets; data: ElecExAcc; background: ElecCSPrAcc; histogram: 10, 3, 13, log
 plot :: variable: BTags; data: ElecExAcc; background: ElecCSPrAcc; histogram: 5, 0, 5, log
 plot :: variable: MTW; data: ElecExAcc; background: ElecCSPrAcc; histogram: 40, 0, 200, log

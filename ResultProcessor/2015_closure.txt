@@ -1,6 +1,6 @@
 # Specify global parameters
 global :: id: Closure
-global :: lumi: 5
+global :: lumi: 4
 global :: publication status: Preliminary
 global :: output formats: eps, pdf
 style :: plot yields: true 
@@ -15,10 +15,6 @@ event content :: name: BTags; type: Int_t; label: BTags
 event content :: name: NVtx; type: UShort_t; label: N(Vtx)
 event content :: name: MTW; type: Float_t; label: M_{T}(w)
 
-event content :: name: DeltaPhi1; type: Float_t; label: #Delta#Phi_{1}
-event content :: name: DeltaPhi2; type: Float_t; label: #Delta#Phi_{2}
-event content :: name: DeltaPhi3; type: Float_t; label: #Delta#Phi_{3}
-
 # selection values
 event content :: name: Expectation; type: Int_t
 
@@ -31,6 +27,7 @@ event content :: name: totalWeight; type: Float_t
 
 event content :: name: selectedIDIsoMuonsNum; type: Int_t
 event content :: name: selectedIDIsoElectronsNum; type: Int_t
+
 #############################################################################################################
 # Specify the data source and label the type of data
 
@@ -43,7 +40,7 @@ dataset :: label: ElecPrMTWDiLep; type: mcprediction; file:/afs/desy.de/user/a/a
 
 #############################################################################################################
 #special selection
-selection :: label: Baseline; cuts: DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + Expectation < 1.5 (MCEx) + Expectation > 0.5 (MCEx) + NJets > 2.1 + MHT > 100 + HT > 500   + MTW < 100 ( MuPrMTWDiLep, ElecPrMTWDiLep) + selectedIDIsoMuonsNum > 0.5 ( MuPrMTWDiLep)+  selectedIDIsoMuonsNum < 1.5 ( MuPrMTWDiLep) + selectedIDIsoElectronsNum < 0.5 ( MuPrMTWDiLep) +  selectedIDIsoMuonsNum <0.5(ElecPrMTWDiLep) + selectedIDIsoElectronsNum >0.5 (ElecPrMTWDiLep) + selectedIDIsoElectronsNum < 1.5 (ElecPrMTWDiLep)
+selection :: label: Baseline; cuts:  Expectation < 1.5 (MCEx) + Expectation > 0.5 (MCEx) + NJets > 2.1 + MHT > 100 + HT > 500   + MTW < 100 ( MuPrMTWDiLep, ElecPrMTWDiLep) + selectedIDIsoMuonsNum > 0.5 ( MuPrMTWDiLep)+  selectedIDIsoMuonsNum < 1.5 ( MuPrMTWDiLep) + selectedIDIsoElectronsNum < 0.5 ( MuPrMTWDiLep) +  selectedIDIsoMuonsNum <0.5(ElecPrMTWDiLep) + selectedIDIsoElectronsNum >0.5 (ElecPrMTWDiLep) + selectedIDIsoElectronsNum < 1.5 (ElecPrMTWDiLep)
 
 
 #############################################################################################################

@@ -1,6 +1,6 @@
 # Specify global parameters
 global :: id: Closure_Combined
-global :: lumi: 5
+global :: lumi: 4
 global :: publication status: Preliminary
 global :: output formats: eps, pdf
 style :: plot yields: true 
@@ -14,10 +14,6 @@ event content :: name: NJets; type: Int_t; label: N_{Jets}
 event content :: name: BTags; type: Int_t; label: BTags
 event content :: name: NVtx; type: UShort_t; label: N(Vtx)
 event content :: name: MTW; type: Float_t; label: M_{T}(w)
-
-event content :: name: DeltaPhi1; type: Float_t; label: #Delta#Phi_{1}
-event content :: name: DeltaPhi2; type: Float_t; label: #Delta#Phi_{2}
-event content :: name: DeltaPhi3; type: Float_t; label: #Delta#Phi_{3}
 
 # selection values
 event content :: name: Expectation; type: Int_t
@@ -38,12 +34,10 @@ dataset :: label: MCEx; type: mc; file:/afs/desy.de/user/a/adraeger/xxl-af-cms/2
 dataset :: label: MuPrMTWDiLep; type: mcprediction; file:/afs/desy.de/user/a/adraeger/xxl-af-cms/2015/2015_RA2/ll_macros/Prediction.root  ; tree: LostLeptonPrediction; weight: totalWeight ; scale:0.5
 dataset :: label: ElecPrMTWDiLep; type: mcprediction; file:/afs/desy.de/user/a/adraeger/xxl-af-cms/2015/2015_RA2/ll_macros/Prediction.root  ; tree: LostLeptonPrediction; weight: totalWeight ; scale:0.5
 
-
-
-
 #############################################################################################################
 #special selection
-selection :: label: Baseline; cuts: DeltaPhi1 > 0.5 + DeltaPhi2 > 0.5 + DeltaPhi3 > 0.3 + Expectation < 1.5 (MCEx) + Expectation > 0.5 (MCEx) + NJets > 2.1 + MHT > 100 + HT > 500   + MTW < 100 ( MuPrMTWDiLep, ElecPrMTWDiLep) + selectedIDIsoMuonsNum > 0.5 ( MuPrMTWDiLep)+  selectedIDIsoMuonsNum < 1.5 ( MuPrMTWDiLep) + selectedIDIsoElectronsNum < 0.5 ( MuPrMTWDiLep) +  selectedIDIsoMuonsNum <0.5(ElecPrMTWDiLep) + selectedIDIsoElectronsNum >0.5 (ElecPrMTWDiLep) + selectedIDIsoElectronsNum < 1.5 (ElecPrMTWDiLep)
+selection :: label: Baseline; cuts: Expectation < 1.5 (MCEx) + Expectation > 0.5 (MCEx) + NJets > 2.1 + MHT > 100 + HT > 500   + MTW < 100 ( MuPrMTWDiLep, ElecPrMTWDiLep) + selectedIDIsoMuonsNum > 0.5 ( MuPrMTWDiLep)+  selectedIDIsoMuonsNum < 1.5 ( MuPrMTWDiLep) + selectedIDIsoElectronsNum < 0.5 ( MuPrMTWDiLep) +  selectedIDIsoMuonsNum <0.5(ElecPrMTWDiLep) + selectedIDIsoElectronsNum >0.5 (ElecPrMTWDiLep) + selectedIDIsoElectronsNum < 1.5 (ElecPrMTWDiLep)
+
 
 
 #############################################################################################################
@@ -54,8 +48,8 @@ plot style :: dataset: MCEx; plot label: t#bar{t} W#rightarrowl#nu+jets; marker:
 #############################################################################################################
 
 plot :: variable: HT; data: MCEx; background: MuPrMTWDiLep + ElecPrMTWDiLep; histogram: 25, 500, 3000, log
-plot :: variable: MHT; data: MCEx; background: MuPrMTWDiLep + ElecPrMTWDiLep; histogram: 24, 100, 1300, log
-plot :: variable: MET; data: MCEx; background: MuPrMTWDiLep + ElecPrMTWDiLep; histogram: 24, 100, 1300, log
+plot :: variable: MHT; data: MCEx; background: MuPrMTWDiLep + ElecPrMTWDiLep; histogram: 22, 200, 1300, log
+plot :: variable: MET; data: MCEx; background: MuPrMTWDiLep + ElecPrMTWDiLep; histogram: 22, 200, 1300, log
 plot :: variable: NJets; data: MCEx; background: MuPrMTWDiLep + ElecPrMTWDiLep; histogram: 10, 3, 13, log
 plot :: variable: BTags; data: MCEx; background: MuPrMTWDiLep + ElecPrMTWDiLep; histogram: 5, 0, 5, log
 plot :: variable: MTW; data: MCEx; background: MuPrMTWDiLep + ElecPrMTWDiLep; histogram: 40, 0, 200, log
