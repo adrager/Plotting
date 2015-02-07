@@ -40,7 +40,7 @@ dataset :: label: ElecCS; type: mcprediction; file:/afs/desy.de/user/a/adraeger/
 
 #############################################################################################################
 #special selection
-selection :: label: Baseline; cuts:  Expectation < 1.5 (MCEx) + Expectation > 0.5 (MCEx) + NJets > 2.1 + MHT > 100 + HT > 500   + MTW < 100 ( MuCS, ElecCS) + selectedIDIsoMuonsNum > 0.5 ( MuCS)+  selectedIDIsoMuonsNum < 1.5 ( MuCS) + selectedIDIsoElectronsNum < 0.5 ( MuCS) +  selectedIDIsoMuonsNum <0.5(ElecCS) + selectedIDIsoElectronsNum >0.5 (ElecCS) + selectedIDIsoElectronsNum < 1.5 (ElecCS)
+selection :: label: Baseline; cuts:  Expectation < 1.5 (MCEx) + Expectation > 0.5 (MCEx) + NJets > 3.1 + MHT > 100 + HT > 500   + MTW < 100 ( MuCS, ElecCS) + selectedIDIsoMuonsNum > 0.5 ( MuCS)+  selectedIDIsoMuonsNum < 1.5 ( MuCS) + selectedIDIsoElectronsNum < 0.5 ( MuCS) +  selectedIDIsoMuonsNum <0.5(ElecCS) + selectedIDIsoElectronsNum >0.5 (ElecCS) + selectedIDIsoElectronsNum < 1.5 (ElecCS)
 
 
 #############################################################################################################
