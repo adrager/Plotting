@@ -1,5 +1,5 @@
 # Specify global parameters
-global :: id: Closure_Combined
+global :: id: Closure_Combined_isoTrackVetoApplied
 global :: lumi: 4
 global :: publication status: Preliminary
 global :: output formats: eps, pdf
@@ -18,12 +18,14 @@ event content :: name: Bin; type: Int_t; label: Bin
 
 # selection values
 event content :: name: Expectation; type: Int_t
+event content :: name: ExpectationReductionIsoTrack; type: Int_t
 
 #weights
 event content :: name: Weight; type: Float_t
 
 #prediction
 event content :: name: totalWeightDiLep; type: Float_t
+event content :: name: totalWeightDiLepIsoTrackReduced; type: Float_t
 
 
 event content :: name: selectedIDIsoMuonsNum; type: Int_t
@@ -32,12 +34,12 @@ event content :: name: selectedIDIsoElectronsNum; type: Int_t
 # Specify the data source and label the type of data
 
 dataset :: label: MCEx; type: mc; file:/afs/desy.de/user/a/adraeger/2015/Expectation.root ; tree: LostLeptonExpectation; weight: Weight
-dataset :: label: MuPrMTWDiLep; type: mcprediction; file:/afs/desy.de/user/a/adraeger/2015/Prediction.root  ; tree: LostLeptonPrediction; weight: totalWeightDiLep ; scale:0.5
-dataset :: label: ElecPrMTWDiLep; type: mcprediction; file:/afs/desy.de/user/a/adraeger/2015/Prediction.root  ; tree: LostLeptonPrediction; weight: totalWeightDiLep ; scale:0.5
+dataset :: label: MuPrMTWDiLep; type: mcprediction; file:/afs/desy.de/user/a/adraeger/2015/Prediction.root  ; tree: LostLeptonPrediction; weight: totalWeightDiLepIsoTrackReduced ; scale:0.5
+dataset :: label: ElecPrMTWDiLep; type: mcprediction; file:/afs/desy.de/user/a/adraeger/2015/Prediction.root  ; tree: LostLeptonPrediction; weight: totalWeightDiLepIsoTrackReduced ; scale:0.5
 
 #############################################################################################################
 #special selection
-selection :: label: Baseline; cuts: Expectation < 1.5 (MCEx) + Expectation > 0.5 (MCEx) + NJets > 3.1 + MHT > 100 + HT > 500   + MTW < 100 ( MuPrMTWDiLep, ElecPrMTWDiLep) + selectedIDIsoMuonsNum > 0.5 ( MuPrMTWDiLep)+  selectedIDIsoMuonsNum < 1.5 ( MuPrMTWDiLep) + selectedIDIsoElectronsNum < 0.5 ( MuPrMTWDiLep) +  selectedIDIsoMuonsNum <0.5(ElecPrMTWDiLep) + selectedIDIsoElectronsNum >0.5 (ElecPrMTWDiLep) + selectedIDIsoElectronsNum < 1.5 (ElecPrMTWDiLep)
+selection :: label: Baseline; cuts: Expectation < 1.5 (MCEx) + Expectation > 0.5 (MCEx) + ExpectationReductionIsoTrack < 0.5 (MCEx) + NJets > 3.1 + MHT > 100 + HT > 500   + MTW < 100 ( MuPrMTWDiLep, ElecPrMTWDiLep) + selectedIDIsoMuonsNum > 0.5 ( MuPrMTWDiLep)+  selectedIDIsoMuonsNum < 1.5 ( MuPrMTWDiLep) + selectedIDIsoElectronsNum < 0.5 ( MuPrMTWDiLep) +  selectedIDIsoMuonsNum <0.5(ElecPrMTWDiLep) + selectedIDIsoElectronsNum >0.5 (ElecPrMTWDiLep) + selectedIDIsoElectronsNum < 1.5 (ElecPrMTWDiLep)
 
 
 

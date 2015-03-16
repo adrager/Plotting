@@ -31,9 +31,9 @@ event content :: name: selectedIDIsoElectronsNum; type: Int_t
 #############################################################################################################
 # Specify the data source and label the type of data
 
-dataset :: label: MCEx; type: mc; file:/afs/desy.de/user/a/adraeger/xxl-af-cms/2015/2015_RA2/ll_macros/Expectation.root ; tree: LostLeptonExpectation; weight: Weight
-dataset :: label: MuCS; type: mcprediction; file:/afs/desy.de/user/a/adraeger/xxl-af-cms/2015/2015_RA2/ll_macros/Prediction.root  ; tree: LostLeptonPrediction; weight: Weight
-dataset :: label: ElecCS; type: mcprediction; file:/afs/desy.de/user/a/adraeger/xxl-af-cms/2015/2015_RA2/ll_macros/Prediction.root  ; tree: LostLeptonPrediction; weight: Weight
+dataset :: label: MCEx; type: mc; file:/afs/desy.de/user/a/adraeger/2015/Expectation.root ; tree: LostLeptonExpectation; weight: Weight
+dataset :: label: MuCS; type: mcprediction; file:/afs/desy.de/user/a/adraeger/2015/Prediction.root  ; tree: LostLeptonPrediction; weight: Weight
+dataset :: label: ElecCS; type: mcprediction; file:/afs/desy.de/user/a/adraeger/2015/Prediction.root  ; tree: LostLeptonPrediction; weight: Weight
 
 
 
@@ -44,54 +44,140 @@ selection :: label: Baseline; cuts:  Expectation < 1.5 (MCEx) + Expectation > 0.
 
 
 
-selection :: label: B_0_NJet_4-Inf_HT_500-800_MHT_200-500;    cuts: BTags<0.5 + Baseline +   NJets > 3+ 500 < HT < 800   + 200 < MHT < 500
-selection :: label: B_1_NJet_4-6_HT_500-800_MHT_200-500;    cuts: 0.6 <BTags<1.5 + Baseline +   3 < NJets < 7 + 500 < HT < 800   + 200 < MHT < 500
-selection :: label: B>=3_NJet_4-6_HT_500-800_MHT_200-500;    cuts: BTags > 2.6 + Baseline +   3 < NJets < 7 + 500 < HT < 800   + 200 < MHT < 500
-selection :: label: B_1_NJet_6-Inf_HT_500-800_MHT_200-500;    cuts: 0.6 <BTags<1.5 + Baseline +   NJets > 6  + 500 < HT < 800   + 200 < MHT < 500
-selection :: label: B_2_NJet_6-Inf_HT_500-800_MHT_200-500;    cuts: 1.6 <BTags<2.5 + Baseline +   NJets > 6 + 500 < HT < 800   + 200 < MHT < 500
-selection :: label: B>=3_NJet_6-Inf_HT_500-800_MHT_200-500;    cuts: BTags > 2.6 + Baseline +   NJets > 6 + 500 < HT < 800   + 200 < MHT < 500
 
-selection :: label: B_0_NJet_4-Inf_HT_800-1200_MHT_200-500;    cuts: BTags<0.5 + Baseline +   NJets > 3+ 800 < HT < 1200   + 200 < MHT < 500
-selection :: label: B_1_NJet_4-6_HT_800-1200_MHT_200-500;    cuts: 0.6 <BTags<1.5 + Baseline +   3 < NJets < 7 + 800 < HT < 1200   + 200 < MHT < 500
-selection :: label: B>=3_NJet_4-6_HT_800-1200_MHT_200-500;    cuts: BTags > 2.6 + Baseline +   3 < NJets < 7 + 800 < HT < 1200   + 200 < MHT < 500
-selection :: label: B_1_NJet_6-Inf_HT_800-1200_MHT_200-500;    cuts: 0.6 <BTags<1.5 + Baseline +   NJets > 6  + 800 < HT < 1200   + 200 < MHT < 500
-selection :: label: B_2_NJet_6-Inf_HT_800-1200_MHT_200-500;    cuts: 1.6 <BTags<2.5 + Baseline +   NJets > 6 + 800 < HT < 1200   + 200 < MHT < 500
-selection :: label: B>=3_NJet_6-Inf_HT_800-1200_MHT_200-500;    cuts: BTags > 2.6 + Baseline +   NJets > 6 + 800 < HT < 1200   + 200 < MHT < 500
+selection :: label: B_0_NJet_4-6_HT500-800_MHT200-500; cuts: BTags<0.5 + Baseline +   3 < NJets < 7 + 500 < HT < 800   + 200 < MHT < 500
+selection :: label: B_0_NJet_4-6_HT800-1200_MHT200-500; cuts: BTags<0.5 + Baseline +   3 < NJets < 7 + 800 < HT < 1200   + 200 < MHT < 500
+selection :: label: B_0_NJet_4-6_HT1200-Inf_MHT200-500; cuts: BTags<0.5 + Baseline +   3 < NJets < 7 + 1200 < HT < 99999   + 200 < MHT < 500
 
-selection :: label: B_0_NJet_4-Inf_HT_1200-Inf_MHT_200-500;    cuts: BTags<0.5 + Baseline +   NJets > 3+ HT > 1200   + 200 < MHT < 500
-selection :: label: B_1_NJet_4-6_HT_1200-Inf_MHT_200-500;    cuts: 0.6 <BTags<1.5 + Baseline +   3 < NJets < 7 + HT > 1200   + 200 < MHT < 500
-selection :: label: B>=3_NJet_4-6_HT_1200-Inf_MHT_200-500;    cuts: BTags > 2.6 + Baseline +   3 < NJets < 7 + HT > 1200   + 200 < MHT < 500
-selection :: label: B_1_NJet_6-Inf_HT_1200-Inf_MHT_200-500;    cuts: 0.6 <BTags<1.5 + Baseline +   NJets > 6  + HT > 1200   + 200 < MHT < 500
-selection :: label: B_2_NJet_6-Inf_HT_1200-Inf_MHT_200-500;    cuts: 1.6 <BTags<2.5 + Baseline +   NJets > 6 + HT > 1200   + 200 < MHT < 500
-selection :: label: B>=3_NJet_6-Inf_HT_1200-Inf_MHT_200-500;    cuts: BTags > 2.6 + Baseline +   NJets > 6 + HT > 1200   + 200 < MHT < 500
+selection :: label: B_0_NJet_4-6_HT500-1200_MHT500-750; cuts: BTags<0.5 + Baseline +   3 < NJets < 7 + 500 < HT < 1200   + 500 < MHT < 750
+selection :: label: B_0_NJet_4-6_HT1200-Inf_MHT500-750; cuts: BTags<0.5 + Baseline +   3 < NJets < 7 + 1200 < HT < 99999   + 500 < MHT < 750
+
+selection :: label: B_0_NJet_4-6_HT800-Inf_MHT750-Inf; cuts: BTags<0.5 + Baseline +   3 < NJets < 7 + 800 < HT < 99999   + 750 < MHT < 99999
 
 
 
-selection :: label: B_0_NJet_4-Inf_HT_500-800_MHT_500-750;    cuts: BTags<0.5 + Baseline +   NJets > 3+ 500 < HT < 800   + 500 < MHT < 750
-selection :: label: B_1_NJet_4-6_HT_500-800_MHT_500-750;    cuts: 0.6 <BTags<1.5 + Baseline +   3 < NJets < 7 + 500 < HT < 800   + 500 < MHT < 750
-selection :: label: B>=3_NJet_4-6_HT_500-800_MHT_500-750;    cuts: BTags > 2.6 + Baseline +   3 < NJets < 7 + 500 < HT < 800   + 500 < MHT < 750
-selection :: label: B_1_NJet_6-Inf_HT_500-800_MHT_500-750;    cuts: 0.6 <BTags<1.5 + Baseline +   NJets > 6  + 500 < HT < 800   + 500 < MHT < 750
-selection :: label: B_2_NJet_6-Inf_HT_500-800_MHT_500-750;    cuts: 1.6 <BTags<2.5 + Baseline +   NJets > 6 + 500 < HT < 800   + 500 < MHT < 750
-selection :: label: B>=3_NJet_6-Inf_HT_500-800_MHT_500-750;    cuts: BTags > 2.6 + Baseline +   NJets > 6 + 500 < HT < 800   + 500 < MHT < 750
+selection :: label: B_0_NJet_7-8_HT500-800_MHT200-500; cuts: BTags<0.5 + Baseline +   6 < NJets < 9 + 500 < HT < 800   + 200 < MHT < 500
+selection :: label: B_0_NJet_7-8_HT800-1200_MHT200-500; cuts: BTags<0.5 + Baseline +   6 < NJets < 9 + 800 < HT < 1200   + 200 < MHT < 500
+selection :: label: B_0_NJet_7-8_HT1200-Inf_MHT200-500; cuts: BTags<0.5 + Baseline +   6 < NJets < 9 + 1200 < HT < 99999   + 200 < MHT < 500
 
-selection :: label: B_0_NJet_4-Inf_HT_800-1200_MHT_500-750;    cuts: BTags<0.5 + Baseline +   NJets > 3+ 800 < HT < 1200   + 500 < MHT < 750
-selection :: label: B_1_NJet_4-6_HT_800-1200_MHT_500-750;    cuts: 0.6 <BTags<1.5 + Baseline +   3 < NJets < 7 + 800 < HT < 1200   + 500 < MHT < 750
-selection :: label: B>=3_NJet_4-6_HT_800-1200_MHT_500-750;    cuts: BTags > 2.6 + Baseline +   3 < NJets < 7 + 800 < HT < 1200   + 500 < MHT < 750
-selection :: label: B_1_NJet_6-Inf_HT_800-1200_MHT_500-750;    cuts: 0.6 <BTags<1.5 + Baseline +   NJets > 6  + 800 < HT < 1200   + 500 < MHT < 750
-selection :: label: B_2_NJet_6-Inf_HT_800-1200_MHT_500-750;    cuts: 1.6 <BTags<2.5 + Baseline +   NJets > 6 + 800 < HT < 1200   + 500 < MHT < 750
-selection :: label: B>=3_NJet_6-Inf_HT_800-1200_MHT_500-750;    cuts: BTags > 2.6 + Baseline +   NJets > 6 + 800 < HT < 1200   + 500 < MHT < 750
+selection :: label: B_0_NJet_7-8_HT500-1200_MHT500-750; cuts: BTags<0.5 + Baseline +   6 < NJets < 9 + 500 < HT < 1200   + 500 < MHT < 750
+selection :: label: B_0_NJet_7-8_HT1200-Inf_MHT500-750; cuts: BTags<0.5 + Baseline +   6 < NJets < 9 + 1200 < HT < 99999   + 500 < MHT < 750
 
-selection :: label: B_0_NJet_4-Inf_HT_1200-Inf_MHT_500-750;    cuts: BTags<0.5 + Baseline +   NJets > 3+ HT > 1200   + 500 < MHT < 750
-selection :: label: B_1_NJet_4-6_HT_1200-Inf_MHT_500-750;    cuts: 0.6 <BTags<1.5 + Baseline +   3 < NJets < 7 + HT > 1200   + 500 < MHT < 750
-selection :: label: B>=3_NJet_4-6_HT_1200-Inf_MHT_500-750;    cuts: BTags > 2.6 + Baseline +   3 < NJets < 7 + HT > 1200   + 500 < MHT < 750
-selection :: label: B_1_NJet_6-Inf_HT_1200-Inf_MHT_500-750;    cuts: 0.6 <BTags<1.5 + Baseline +   NJets > 6  + HT > 1200   + 500 < MHT < 750
-selection :: label: B_2_NJet_6-Inf_HT_1200-Inf_MHT_500-750;    cuts: 1.6 <BTags<2.5 + Baseline +   NJets > 6 + HT > 1200   + 500 < MHT < 750
-selection :: label: B>=3_NJet_6-Inf_HT_1200-Inf_MHT_500-750;    cuts: BTags > 2.6 + Baseline +   NJets > 6 + HT > 1200   + 500 < MHT < 750
+selection :: label: B_0_NJet_7-8_HT800-Inf_MHT750-Inf; cuts: BTags<0.5 + Baseline +   6 < NJets < 9 + 800 < HT < 99999   + 750 < MHT < 99999
 
-selection :: label: B_0_NJet_4-Inf_HT_0800-Inf_MHT_750-Inf;    cuts: BTags<0.5 + Baseline +   NJets > 3+ HT > 800   + MHT > 750
-selection :: label: B_1_NJet_4-Inf_HT_0800-Inf_MHT_750-Inf;    cuts: 0.6 <BTags<1.5 + Baseline +   NJets > 3+ HT > 800   + MHT > 750
-selection :: label: B_2_NJet_4-Inf_HT_0800-Inf_MHT_750-Inf;    cuts: 1.6 <BTags<2.5 + Baseline +   NJets > 3+ HT > 800   + MHT > 750
-selection :: label: B>=3_NJet_4-Inf_HT_0800-Inf_MHT_750-Inf;    cuts: BTags>2.5 + Baseline +   NJets > 3+ HT > 800   + MHT > 750
+
+
+selection :: label: B_0_NJet_9-Inf_HT500-800_MHT200-500; cuts: BTags<0.5 + Baseline +   8 < NJets < 9999 + 500 < HT < 800   + 200 < MHT < 500
+selection :: label: B_0_NJet_9-Inf_HT800-1200_MHT200-500; cuts: BTags<0.5 + Baseline +   8 < NJets < 9999 + 800 < HT < 1200   + 200 < MHT < 500
+selection :: label: B_0_NJet_9-Inf_HT1200-Inf_MHT200-500; cuts: BTags<0.5 + Baseline +   8 < NJets < 9999 + 1200 < HT < 99999   + 200 < MHT < 500
+
+selection :: label: B_0_NJet_9-Inf_HT500-1200_MHT500-750; cuts: BTags<0.5 + Baseline +   8 < NJets < 9999 + 500 < HT < 1200   + 500 < MHT < 750
+selection :: label: B_0_NJet_9-Inf_HT1200-Inf_MHT500-750; cuts: BTags<0.5 + Baseline +   8 < NJets < 9999 + 1200 < HT < 99999   + 500 < MHT < 750
+
+selection :: label: B_0_NJet_9-Inf_HT800-Inf_MHT750-Inf; cuts: BTags<0.5 + Baseline +   8 < NJets < 9999 + 800 < HT < 99999   + 750 < MHT < 99999
+
+
+
+
+selection :: label: B_1_NJet_4-6_HT500-800_MHT200-500; cuts: 0.5 < BTags < 1.5 + Baseline +   3 < NJets < 7 + 500 < HT < 800   + 200 < MHT < 500
+selection :: label: B_1_NJet_4-6_HT800-1200_MHT200-500; cuts: 0.5 < BTags < 1.5 + Baseline +   3 < NJets < 7 + 800 < HT < 1200   + 200 < MHT < 500
+selection :: label: B_1_NJet_4-6_HT1200-Inf_MHT200-500; cuts: 0.5 < BTags < 1.5 + Baseline +   3 < NJets < 7 + 1200 < HT < 99999   + 200 < MHT < 500
+
+selection :: label: B_1_NJet_4-6_HT500-1200_MHT500-750; cuts: 0.5 < BTags < 1.5 + Baseline +   3 < NJets < 7 + 500 < HT < 1200   + 500 < MHT < 750
+selection :: label: B_1_NJet_4-6_HT1200-Inf_MHT500-750; cuts: 0.5 < BTags < 1.5 + Baseline +   3 < NJets < 7 + 1200 < HT < 99999   + 500 < MHT < 750
+
+selection :: label: B_1_NJet_4-6_HT800-Inf_MHT750-Inf; cuts: 0.5 < BTags < 1.5 + Baseline +   3 < NJets < 7 + 800 < HT < 99999   + 750 < MHT < 99999
+
+
+
+selection :: label: B_1_NJet_7-8_HT500-800_MHT200-500; cuts: 0.5 < BTags < 1.5 + Baseline +   6 < NJets < 9 + 500 < HT < 800   + 200 < MHT < 500
+selection :: label: B_1_NJet_7-8_HT800-1200_MHT200-500; cuts: 0.5 < BTags < 1.5 + Baseline +   6 < NJets < 9 + 800 < HT < 1200   + 200 < MHT < 500
+selection :: label: B_1_NJet_7-8_HT1200-Inf_MHT200-500; cuts: 0.5 < BTags < 1.5 + Baseline +   6 < NJets < 9 + 1200 < HT < 99999   + 200 < MHT < 500
+
+selection :: label: B_1_NJet_7-8_HT500-1200_MHT500-750; cuts: 0.5 < BTags < 1.5 + Baseline +   6 < NJets < 9 + 500 < HT < 1200   + 500 < MHT < 750
+selection :: label: B_1_NJet_7-8_HT1200-Inf_MHT500-750; cuts: 0.5 < BTags < 1.5 + Baseline +   6 < NJets < 9 + 1200 < HT < 99999   + 500 < MHT < 750
+
+selection :: label: B_1_NJet_7-8_HT800-Inf_MHT750-Inf; cuts: 0.5 < BTags < 1.5 + Baseline +   6 < NJets < 9 + 800 < HT < 99999   + 750 < MHT < 99999
+
+
+
+selection :: label: B_1_NJet_9-Inf_HT500-800_MHT200-500; cuts: 0.5 < BTags < 1.5 + Baseline +   8 < NJets < 9999 + 500 < HT < 800   + 200 < MHT < 500
+selection :: label: B_1_NJet_9-Inf_HT800-1200_MHT200-500; cuts: 0.5 < BTags < 1.5 + Baseline +   8 < NJets < 9999 + 800 < HT < 1200   + 200 < MHT < 500
+selection :: label: B_1_NJet_9-Inf_HT1200-Inf_MHT200-500; cuts: 0.5 < BTags < 1.5 + Baseline +   8 < NJets < 9999 + 1200 < HT < 99999   + 200 < MHT < 500
+
+selection :: label: B_1_NJet_9-Inf_HT500-1200_MHT500-750; cuts: 0.5 < BTags < 1.5 + Baseline +   8 < NJets < 9999 + 500 < HT < 1200   + 500 < MHT < 750
+selection :: label: B_1_NJet_9-Inf_HT1200-Inf_MHT500-750; cuts: 0.5 < BTags < 1.5 + Baseline +   8 < NJets < 9999 + 1200 < HT < 99999   + 500 < MHT < 750
+
+selection :: label: B_1_NJet_9-Inf_HT800-Inf_MHT750-Inf; cuts: 0.5 < BTags < 1.5 + Baseline +   8 < NJets < 9999 + 800 < HT < 99999   + 750 < MHT < 99999
+
+
+
+
+
+selection :: label: B_2_NJet_4-6_HT500-800_MHT200-500; cuts: 1.5 < BTags < 2.5 + Baseline +   3 < NJets < 7 + 500 < HT < 800   + 200 < MHT < 500
+selection :: label: B_2_NJet_4-6_HT800-1200_MHT200-500; cuts: 1.5 < BTags < 2.5 + Baseline +   3 < NJets < 7 + 800 < HT < 1200   + 200 < MHT < 500
+selection :: label: B_2_NJet_4-6_HT1200-Inf_MHT200-500; cuts: 1.5 < BTags < 2.5 + Baseline +   3 < NJets < 7 + 1200 < HT < 99999   + 200 < MHT < 500
+
+selection :: label: B_2_NJet_4-6_HT500-1200_MHT500-750; cuts: 1.5 < BTags < 2.5 + Baseline +   3 < NJets < 7 + 500 < HT < 1200   + 500 < MHT < 750
+selection :: label: B_2_NJet_4-6_HT1200-Inf_MHT500-750; cuts: 1.5 < BTags < 2.5 + Baseline +   3 < NJets < 7 + 1200 < HT < 99999   + 500 < MHT < 750
+
+selection :: label: B_2_NJet_4-6_HT800-Inf_MHT750-Inf; cuts: 1.5 < BTags < 2.5 + Baseline +   3 < NJets < 7 + 800 < HT < 99999   + 750 < MHT < 99999
+
+
+
+selection :: label: B_2_NJet_7-8_HT500-800_MHT200-500; cuts: 1.5 < BTags < 2.5 + Baseline +   6 < NJets < 9 + 500 < HT < 800   + 200 < MHT < 500
+selection :: label: B_2_NJet_7-8_HT800-1200_MHT200-500; cuts: 1.5 < BTags < 2.5 + Baseline +   6 < NJets < 9 + 800 < HT < 1200   + 200 < MHT < 500
+selection :: label: B_2_NJet_7-8_HT1200-Inf_MHT200-500; cuts: 1.5 < BTags < 2.5 + Baseline +   6 < NJets < 9 + 1200 < HT < 99999   + 200 < MHT < 500
+
+selection :: label: B_2_NJet_7-8_HT500-1200_MHT500-750; cuts: 1.5 < BTags < 2.5 + Baseline +   6 < NJets < 9 + 500 < HT < 1200   + 500 < MHT < 750
+selection :: label: B_2_NJet_7-8_HT1200-Inf_MHT500-750; cuts: 1.5 < BTags < 2.5 + Baseline +   6 < NJets < 9 + 1200 < HT < 99999   + 500 < MHT < 750
+
+selection :: label: B_2_NJet_7-8_HT800-Inf_MHT750-Inf; cuts: 1.5 < BTags < 2.5 + Baseline +   6 < NJets < 9 + 800 < HT < 99999   + 750 < MHT < 99999
+
+
+
+selection :: label: B_2_NJet_9-Inf_HT500-800_MHT200-500; cuts: 1.5 < BTags < 2.5 + Baseline +   8 < NJets < 9999 + 500 < HT < 800   + 200 < MHT < 500
+selection :: label: B_2_NJet_9-Inf_HT800-1200_MHT200-500; cuts: 1.5 < BTags < 2.5 + Baseline +   8 < NJets < 9999 + 800 < HT < 1200   + 200 < MHT < 500
+selection :: label: B_2_NJet_9-Inf_HT1200-Inf_MHT200-500; cuts: 1.5 < BTags < 2.5 + Baseline +   8 < NJets < 9999 + 1200 < HT < 99999   + 200 < MHT < 500
+
+selection :: label: B_2_NJet_9-Inf_HT500-1200_MHT500-750; cuts: 1.5 < BTags < 2.5 + Baseline +   8 < NJets < 9999 + 500 < HT < 1200   + 500 < MHT < 750
+selection :: label: B_2_NJet_9-Inf_HT1200-Inf_MHT500-750; cuts: 1.5 < BTags < 2.5 + Baseline +   8 < NJets < 9999 + 1200 < HT < 99999   + 500 < MHT < 750
+
+selection :: label: B_2_NJet_9-Inf_HT800-Inf_MHT750-Inf; cuts: 1.5 < BTags < 2.5 + Baseline +   8 < NJets < 9999 + 800 < HT < 99999   + 750 < MHT < 99999
+
+
+
+selection :: label: B>=3_NJet_4-6_HT500-800_MHT200-500; cuts: BTags > 2.5 + Baseline +   3 < NJets < 7 + 500 < HT < 800   + 200 < MHT < 500
+selection :: label: B>=3_NJet_4-6_HT800-1200_MHT200-500; cuts: BTags > 2.5 + Baseline +   3 < NJets < 7 + 800 < HT < 1200   + 200 < MHT < 500
+selection :: label: B>=3_NJet_4-6_HT1200-Inf_MHT200-500; cuts: BTags > 2.5 + Baseline +   3 < NJets < 7 + 1200 < HT < 99999   + 200 < MHT < 500
+
+selection :: label: B>=3_NJet_4-6_HT500-1200_MHT500-750; cuts: BTags > 2.5 + Baseline +   3 < NJets < 7 + 500 < HT < 1200   + 500 < MHT < 750
+selection :: label: B>=3_NJet_4-6_HT1200-Inf_MHT500-750; cuts: BTags > 2.5 + Baseline +   3 < NJets < 7 + 1200 < HT < 99999   + 500 < MHT < 750
+
+selection :: label: B>=3_NJet_4-6_HT800-Inf_MHT750-Inf; cuts: BTags > 2.5 + Baseline +   3 < NJets < 7 + 800 < HT < 99999   + 750 < MHT < 99999
+
+
+
+selection :: label: B>=3_NJet_7-8_HT500-800_MHT200-500; cuts: BTags > 2.5 + Baseline +   6 < NJets < 9 + 500 < HT < 800   + 200 < MHT < 500
+selection :: label: B>=3_NJet_7-8_HT800-1200_MHT200-500; cuts: BTags > 2.5 + Baseline +   6 < NJets < 9 + 800 < HT < 1200   + 200 < MHT < 500
+selection :: label: B>=3_NJet_7-8_HT1200-Inf_MHT200-500; cuts: BTags > 2.5 + Baseline +   6 < NJets < 9 + 1200 < HT < 99999   + 200 < MHT < 500
+
+selection :: label: B>=3_NJet_7-8_HT500-1200_MHT500-750; cuts: BTags > 2.5 + Baseline +   6 < NJets < 9 + 500 < HT < 1200   + 500 < MHT < 750
+selection :: label: B>=3_NJet_7-8_HT1200-Inf_MHT500-750; cuts: BTags > 2.5 + Baseline +   6 < NJets < 9 + 1200 < HT < 99999   + 500 < MHT < 750
+
+selection :: label: B>=3_NJet_7-8_HT800-Inf_MHT750-Inf; cuts: BTags > 2.5 + Baseline +   6 < NJets < 9 + 800 < HT < 99999   + 750 < MHT < 99999
+
+
+
+selection :: label: B>=3_NJet_9-Inf_HT500-800_MHT200-500; cuts: BTags > 2.5 + Baseline +   8 < NJets < 9999 + 500 < HT < 800   + 200 < MHT < 500
+selection :: label: B>=3_NJet_9-Inf_HT800-1200_MHT200-500; cuts: BTags > 2.5 + Baseline +   8 < NJets < 9999 + 800 < HT < 1200   + 200 < MHT < 500
+selection :: label: B>=3_NJet_9-Inf_HT1200-Inf_MHT200-500; cuts: BTags > 2.5 + Baseline +   8 < NJets < 9999 + 1200 < HT < 99999   + 200 < MHT < 500
+
+selection :: label: B>=3_NJet_9-Inf_HT500-1200_MHT500-750; cuts: BTags > 2.5 + Baseline +   8 < NJets < 9999 + 500 < HT < 1200   + 500 < MHT < 750
+selection :: label: B>=3_NJet_9-Inf_HT1200-Inf_MHT500-750; cuts: BTags > 2.5 + Baseline +   8 < NJets < 9999 + 1200 < HT < 99999   + 500 < MHT < 750
+
+selection :: label: B>=3_NJet_9-Inf_HT800-Inf_MHT750-Inf; cuts: BTags > 2.5 + Baseline +   8 < NJets < 9999 + 800 < HT < 99999   + 750 < MHT < 99999
+
 
 
 #############################################################################################################

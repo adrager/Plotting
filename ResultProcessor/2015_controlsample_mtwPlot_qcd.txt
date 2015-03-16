@@ -13,7 +13,7 @@ event content :: name: MET; type: Float_t; label: #slash{E}_{T}; unit: GeV
 event content :: name: NJets; type: Int_t; label: N_{Jets}
 event content :: name: BTags; type: Int_t; label: BTags
 event content :: name: NVtx; type: UShort_t; label: N(Vtx)
-event content :: name: MTW; type: Float_t; label: M_{T}(w)
+event content :: name: MTW; type: Float_t; label: M_{T}(w); unit: GeV
 
 event content :: name: DeltaPhi1; type: Float_t; label: #Delta#Phi_{1}
 event content :: name: DeltaPhi2; type: Float_t; label: #Delta#Phi_{2}
@@ -31,18 +31,16 @@ event content :: name: WeightProducer; type: Float_t
 event content :: name: selectedIDIsoMuonsNum; type: Int_t
 event content :: name: selectedIDIsoElectronsNum; type: Int_t
 
-event content :: name: RecoIsoMuonNum; type: Int_t
-event content :: name: RecoIsoElecNum; type: Int_t
 #############################################################################################################
 # Specify the data source and label the type of data
 
-dataset :: label: MCEx; type: mc; file:/afs/desy.de/user/a/adraeger/xxl-af-cms/2015/2015_RA2/ll_macros/Expectation.root ; tree: LostLeptonExpectation; weight: Weight
-dataset :: label: MuPrMTWDiLep; type: mcprediction; file:/afs/desy.de/user/a/adraeger/xxl-af-cms/2015/2015_RA2/ll_macros/Prediction.root  ; tree: LostLeptonPrediction; weight: Weight 
-dataset :: label: ElecPrMTWDiLep; type: mcprediction; file:/afs/desy.de/user/a/adraeger/xxl-af-cms/2015/2015_RA2/ll_macros/Prediction.root  ; tree: LostLeptonPrediction; weight: Weight 
-dataset :: label: T1tttt1500mu; type: signal; file:/afs/desy.de/user/a/adraeger/xxl-af-cms/2015/2015_RA2/ll_macros/signal/SMS-T1tttt_2J_mGl-1500_mLSP-100.root; tree: LostLeptonExpectation; weight: Weight; scale:100
-dataset :: label: T1tttt1500elec; type: signal; file:/afs/desy.de/user/a/adraeger/xxl-af-cms/2015/2015_RA2/ll_macros/signal/SMS-T1tttt_2J_mGl-1500_mLSP-100.root; tree: LostLeptonExpectation; weight: Weight; scale:100
-dataset :: label: QCDMu; type: signal; file:/afs/desy.de/user/a/adraeger/xxl-af-cms/2015/2015_RA2/ll_macros/qcd/QCD.root; tree: LostLeptonPrediction; weight: Weight
-dataset :: label: QCDElec; type: signal; file:/afs/desy.de/user/a/adraeger/xxl-af-cms/2015/2015_RA2/ll_macros/qcd/QCD.root; tree: LostLeptonPrediction; weight: Weight
+dataset :: label: MCEx; type: mc; file:/afs/desy.de/user/a/adraeger/2015/Expectation.root ; tree: LostLeptonExpectation; weight: Weight
+dataset :: label: MuPrMTWDiLep; type: mcprediction; file:/afs/desy.de/user/a/adraeger/2015/Prediction.root  ; tree: LostLeptonPrediction; weight: Weight 
+dataset :: label: ElecPrMTWDiLep; type: mcprediction; file:/afs/desy.de/user/a/adraeger/2015/Prediction.root  ; tree: LostLeptonPrediction; weight: Weight 
+dataset :: label: T1tttt1500mu; type: signal; file:/afs/desy.de/user/a/adraeger/2015/signal/SMS-T1tttt_2J_mGl-1500_mLSP-100.root; tree: LostLeptonExpectation; weight: Weight; scale:100
+dataset :: label: T1tttt1500elec; type: signal; file:/afs/desy.de/user/a/adraeger/2015/signal/SMS-T1tttt_2J_mGl-1500_mLSP-100.root; tree: LostLeptonExpectation; weight: Weight; scale:100
+dataset :: label: QCDMu; type: signal; file:/afs/desy.de/user/a/adraeger/2015/qcd/QCD.root; tree: LostLeptonExpectation; weight: Weight
+dataset :: label: QCDElec; type: signal; file:/afs/desy.de/user/a/adraeger/2015/qcd/QCD.root; tree: LostLeptonExpectation; weight: Weight
 
 #############################################################################################################
 #special selection

@@ -38,37 +38,37 @@ event content :: name: selectedIDIsoElectronsNum; type: Int_t
 # Specify the data source and label the type of data
 
 
-#dataset :: label: ElecExIso; type: mc; file:/afs/desy.de/user/a/adraeger/xxl-af-cms/2015/2015_RA2/ll_macros/Expectation.root ; tree: LostLeptonExpectation; weight: Weight
-#dataset :: label: ElecExReco; type: mc; file:/afs/desy.de/user/a/adraeger/xxl-af-cms/2015/2015_RA2/ll_macros/Expectation.root ; tree: LostLeptonExpectation; weight: Weight
-#dataset :: label: ElecExAcc; type: mc; file:/afs/desy.de/user/a/adraeger/xxl-af-cms/2015/2015_RA2/ll_macros/Expectation.root ; tree: LostLeptonExpectation; weight: Weight
+dataset :: label: ElecExIso; type: mc; file:/afs/desy.de/user/a/adraeger/2015/Expectation.root ; tree: LostLeptonExpectation; weight: Weight
+dataset :: label: ElecExReco; type: mc; file:/afs/desy.de/user/a/adraeger/2015/Expectation.root ; tree: LostLeptonExpectation; weight: Weight
+dataset :: label: ElecExAcc; type: mc; file:/afs/desy.de/user/a/adraeger/2015/Expectation.root ; tree: LostLeptonExpectation; weight: Weight
 
-#dataset :: label: MuCSPrIso; type: mcprediction; file:/afs/desy.de/user/a/adraeger/xxl-af-cms/2015/2015_RA2/ll_macros/Prediction.root  ; tree: LostLeptonPrediction; weight: elecIsoWeight
-#dataset :: label: MuCSPrReco; type: mcprediction; file:/afs/desy.de/user/a/adraeger/xxl-af-cms/2015/2015_RA2/ll_macros/Prediction.root  ; tree: LostLeptonPrediction; weight: elecRecoWeight
-#dataset :: label: MuCSPrAcc; type: mcprediction; file:/afs/desy.de/user/a/adraeger/xxl-af-cms/2015/2015_RA2/ll_macros/Prediction.root  ; tree: LostLeptonPrediction; weight: elecAccWeight
-
-
-#dataset :: label: ElecCSPrIso; type: mcprediction; file:/afs/desy.de/user/a/adraeger/xxl-af-cms/2015/2015_RA2/ll_macros/Prediction.root  ; tree: LostLeptonPrediction; weight: elecIsoWeight
-#dataset :: label: ElecCSPrReco; type: mcprediction; file:/afs/desy.de/user/a/adraeger/xxl-af-cms/2015/2015_RA2/ll_macros/Prediction.root  ; tree: LostLeptonPrediction; weight: elecRecoWeight
-#dataset :: label: ElecCSPrAcc; type: mcprediction; file:/afs/desy.de/user/a/adraeger/xxl-af-cms/2015/2015_RA2/ll_macros/Prediction.root  ; tree: LostLeptonPrediction; weight: elecAccWeight
-
-dataset :: label: ElecExIso; type: mc; file:/nfs/dust/cms/user/adraeger/phys14/mc/phys14ANFINAL/Expectation.root ; tree: LostLeptonExpectation; weight: Weight
-dataset :: label: ElecExReco; type: mc; file:/nfs/dust/cms/user/adraeger/phys14/mc/phys14ANFINAL/Expectation.root ; tree: LostLeptonExpectation; weight: Weight
-dataset :: label: ElecExAcc; type: mc; file:/nfs/dust/cms/user/adraeger/phys14/mc/phys14ANFINAL/Expectation.root ; tree: LostLeptonExpectation; weight: Weight
-
-dataset :: label: MuCSPrIso; type: mcprediction; file:/nfs/dust/cms/user/adraeger/phys14/mc/phys14ANFINAL/Prediction.root  ; tree: LostLeptonPrediction; weight: elecIsoWeight
-dataset :: label: MuCSPrReco; type: mcprediction; file:/nfs/dust/cms/user/adraeger/phys14/mc/phys14ANFINAL/Prediction.root  ; tree: LostLeptonPrediction; weight: elecRecoWeight
-dataset :: label: MuCSPrAcc; type: mcprediction; file:/nfs/dust/cms/user/adraeger/phys14/mc/phys14ANFINAL/Prediction.root  ; tree: LostLeptonPrediction; weight: elecAccWeight
+dataset :: label: MuCSPrIso; type: mcprediction; file:/afs/desy.de/user/a/adraeger/2015/Prediction.root  ; tree: LostLeptonPrediction; weight: elecIsoWeight
+dataset :: label: MuCSPrReco; type: mcprediction; file:/afs/desy.de/user/a/adraeger/2015/Prediction.root  ; tree: LostLeptonPrediction; weight: elecRecoWeight
+dataset :: label: MuCSPrAcc; type: mcprediction; file:/afs/desy.de/user/a/adraeger/2015/Prediction.root  ; tree: LostLeptonPrediction; weight: elecAccWeight
 
 
-dataset :: label: ElecCSPrIso; type: mcprediction; file:/nfs/dust/cms/user/adraeger/phys14/mc/phys14ANFINAL/Prediction.root  ; tree: LostLeptonPrediction; weight: elecIsoWeight
-dataset :: label: ElecCSPrReco; type: mcprediction; file:/nfs/dust/cms/user/adraeger/phys14/mc/phys14ANFINAL/Prediction.root  ; tree: LostLeptonPrediction; weight: elecRecoWeight
-dataset :: label: ElecCSPrAcc; type: mcprediction; file:/nfs/dust/cms/user/adraeger/phys14/mc/phys14ANFINAL/Prediction.root  ; tree: LostLeptonPrediction; weight: elecAccWeight
+dataset :: label: ElecCSPrIso; type: mcprediction; file:/afs/desy.de/user/a/adraeger/2015/Prediction.root  ; tree: LostLeptonPrediction; weight: elecIsoWeight
+dataset :: label: ElecCSPrReco; type: mcprediction; file:/afs/desy.de/user/a/adraeger/2015/Prediction.root  ; tree: LostLeptonPrediction; weight: elecRecoWeight
+dataset :: label: ElecCSPrAcc; type: mcprediction; file:/afs/desy.de/user/a/adraeger/2015/Prediction.root  ; tree: LostLeptonPrediction; weight: elecAccWeight
+
+#dataset :: label: ElecExIso; type: mc; file:/nfs/dust/cms/user/adraeger/phys14/mc/phys14ANFINAL/Expectation.root ; tree: LostLeptonExpectation; weight: Weight
+#dataset :: label: ElecExReco; type: mc; file:/nfs/dust/cms/user/adraeger/phys14/mc/phys14ANFINAL/Expectation.root ; tree: LostLeptonExpectation; weight: Weight
+#dataset :: label: ElecExAcc; type: mc; file:/nfs/dust/cms/user/adraeger/phys14/mc/phys14ANFINAL/Expectation.root ; tree: LostLeptonExpectation; weight: Weight
+
+#dataset :: label: MuCSPrIso; type: mcprediction; file:/nfs/dust/cms/user/adraeger/phys14/mc/phys14ANFINAL/Prediction.root  ; tree: LostLeptonPrediction; weight: elecIsoWeight
+#dataset :: label: MuCSPrReco; type: mcprediction; file:/nfs/dust/cms/user/adraeger/phys14/mc/phys14ANFINAL/Prediction.root  ; tree: LostLeptonPrediction; weight: elecRecoWeight
+#dataset :: label: MuCSPrAcc; type: mcprediction; file:/nfs/dust/cms/user/adraeger/phys14/mc/phys14ANFINAL/Prediction.root  ; tree: LostLeptonPrediction; weight: elecAccWeight
+
+
+#dataset :: label: ElecCSPrIso; type: mcprediction; file:/nfs/dust/cms/user/adraeger/phys14/mc/phys14ANFINAL/Prediction.root  ; tree: LostLeptonPrediction; weight: elecIsoWeight
+#dataset :: label: ElecCSPrReco; type: mcprediction; file:/nfs/dust/cms/user/adraeger/phys14/mc/phys14ANFINAL/Prediction.root  ; tree: LostLeptonPrediction; weight: elecRecoWeight
+#dataset :: label: ElecCSPrAcc; type: mcprediction; file:/nfs/dust/cms/user/adraeger/phys14/mc/phys14ANFINAL/Prediction.root  ; tree: LostLeptonPrediction; weight: elecAccWeight
 
 
 #############################################################################################################
 #special selection
 selection :: label: Baseline; cuts:  NJets > 3.1 + MHT > 200 + HT > 500 +   elecIso < 0.5 (ElecExIso) + elecReco <0.5(ElecExReco) + elecAcc < 0.5(ElecExAcc) + MTW < 100 ( MuCSPrIso, MuCSPrReco, MuCSPrAcc , ElecCSPrIso, ElecCSPrReco, ElecCSPrAcc) + selectedIDIsoMuonsNum > 0.5 ( MuCSPrIso, MuCSPrReco, MuCSPrAcc)+  selectedIDIsoMuonsNum < 1.5 ( MuCSPrIso, MuCSPrReco, MuCSPrAcc) + selectedIDIsoElectronsNum < 0.5 ( MuCSPrIso, MuCSPrReco, MuCSPrAcc) + elecIsoWeight < 10 (MuCSPrIso, MuCSPrReco, MuCSPrAcc) + selectedIDIsoMuonsNum <0.5(ElecCSPrIso, ElecCSPrReco, ElecCSPrAcc) + selectedIDIsoElectronsNum >0.5 (ElecCSPrIso, ElecCSPrReco, ElecCSPrAcc) + selectedIDIsoElectronsNum < 1.5 (ElecCSPrIso, ElecCSPrReco, ElecCSPrAcc)
-
+selection :: label: B>=2_Baseline; cuts: Baseline + BTags > 1.5
 
 #############################################################################################################
 

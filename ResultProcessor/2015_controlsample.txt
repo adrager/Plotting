@@ -13,7 +13,8 @@ event content :: name: MET; type: Float_t; label: #slash{E}_{T}; unit: GeV
 event content :: name: NJets; type: Int_t; label: N_{Jets}
 event content :: name: BTags; type: Int_t; label: BTags
 event content :: name: NVtx; type: UShort_t; label: N(Vtx)
-event content :: name: MTW; type: Float_t; label: M_{T}(w)
+event content :: name: MTW; type: Float_t; label: M_{T}(w); unit: GeV
+event content :: name: Bin; type: Int_t; label: Bin
 
 # selection values
 event content :: name: Expectation; type: Int_t
@@ -31,9 +32,9 @@ event content :: name: selectedIDIsoElectronsNum; type: Int_t
 #############################################################################################################
 # Specify the data source and label the type of data
 
-dataset :: label: MCEx; type: mc; file:/afs/desy.de/user/a/adraeger/xxl-af-cms/2015/2015_RA2/ll_macros/Expectation.root ; tree: LostLeptonExpectation; weight: Weight
-dataset :: label: MuCS; type: mcprediction; file:/afs/desy.de/user/a/adraeger/xxl-af-cms/2015/2015_RA2/ll_macros/Prediction.root  ; tree: LostLeptonPrediction; weight: Weight
-dataset :: label: ElecCS; type: mcprediction; file:/afs/desy.de/user/a/adraeger/xxl-af-cms/2015/2015_RA2/ll_macros/Prediction.root  ; tree: LostLeptonPrediction; weight: Weight
+dataset :: label: MCEx; type: mc; file:/afs/desy.de/user/a/adraeger/2015/Expectation.root ; tree: LostLeptonExpectation; weight: Weight
+dataset :: label: MuCS; type: mcprediction; file:/afs/desy.de/user/a/adraeger/2015/Prediction.root  ; tree: LostLeptonPrediction; weight: Weight
+dataset :: label: ElecCS; type: mcprediction; file:/afs/desy.de/user/a/adraeger/2015/Prediction.root  ; tree: LostLeptonPrediction; weight: Weight
 
 
 
@@ -57,6 +58,7 @@ plot :: variable: NJets; data: MuCS; background: MCEx; histogram: 10, 3, 13, log
 plot :: variable: BTags; data: MuCS; background: MCEx; histogram: 5, 0, 5, log
 plot :: variable: MTW; data: MuCS; background: MCEx; histogram: 40, 0, 200, log
 plot :: variable: NVtx; data: MuCS; background: MCEx;  histogram: 25, -0.5, 49.5, log
+plot :: variable: Bin; data: MuCS; background: MCEx; histogram: 72, 0, 72, log
 
 plot :: variable: HT; data: ElecCS; background: MCEx; histogram: 25, 500, 3000, log
 plot :: variable: MHT; data: ElecCS; background: MCEx; histogram: 24, 100, 1300, log
@@ -65,4 +67,5 @@ plot :: variable: NJets; data: ElecCS; background: MCEx; histogram: 10, 3, 13, l
 plot :: variable: BTags; data: ElecCS; background: MCEx; histogram: 5, 0, 5, log
 plot :: variable: MTW; data: ElecCS; background: MCEx; histogram: 40, 0, 200, log
 plot :: variable: NVtx; data: ElecCS; background: MCEx;  histogram: 25, -0.5, 49.5, log
+plot :: variable: Bin; data: ElecCS; background: MCEx; histogram: 72, 0, 72, log
 

@@ -32,10 +32,10 @@ event content :: name: IsolatedTracksNum; type: Int_t
 #############################################################################################################
 # Specify the data source and label the type of data
 
-dataset :: label: MCEx; type: mc; file:/afs/desy.de/user/a/adraeger/xxl-af-cms/2015/2015_RA2/ll_macros/Expectation.root ; tree: LostLeptonExpectation; weight: Weight
-dataset :: label: MuCS; type: mcprediction; file:/afs/desy.de/user/a/adraeger/xxl-af-cms/2015/2015_RA2/ll_macros/Expectation.root  ; tree: LostLeptonExpectation; weight: Weight
-dataset :: label: ElecCS; type: mcprediction; file:/afs/desy.de/user/a/adraeger/xxl-af-cms/2015/2015_RA2/ll_macros/Expectation.root  ; tree: LostLeptonExpectation; weight: Weight
-dataset :: label: IsoTrackCS; type: mcprediction; file:/afs/desy.de/user/a/adraeger/xxl-af-cms/2015/2015_RA2/ll_macros/Expectation.root  ; tree: LostLeptonExpectation; weight: Weight
+dataset :: label: MCEx; type: mc; file:/afs/desy.de/user/a/adraeger/2015/Expectation.root ; tree: LostLeptonExpectation; weight: Weight
+dataset :: label: MuCS; type: mcprediction; file:/afs/desy.de/user/a/adraeger/2015/Expectation.root  ; tree: LostLeptonExpectation; weight: Weight
+dataset :: label: ElecCS; type: mcprediction; file:/afs/desy.de/user/a/adraeger/2015/Expectation.root  ; tree: LostLeptonExpectation; weight: Weight
+dataset :: label: IsoTrackCS; type: mcprediction; file:/afs/desy.de/user/a/adraeger/2015/Expectation.root  ; tree: LostLeptonExpectation; weight: Weight
 
 
 
