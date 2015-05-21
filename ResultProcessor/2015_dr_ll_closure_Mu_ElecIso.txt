@@ -35,29 +35,29 @@ event content :: name: selectedIDIsoElectronsNum; type: Int_t
 #############################################################################################################
 # Specify the data source and label the type of data
 
-dataset :: label: MCEx; type: mc; file:/afs/desy.de/user/a/adraeger/2015/Expectation.root ; tree: LostLeptonExpectation; weight: Weight
-dataset :: label: MuCSMTWDiLepCorrected; type: mcprediction; file:/afs/desy.de/user/a/adraeger/2015/Prediction.root  ; tree: LostLeptonPrediction; weight: elecIsoWeight
+dataset :: label: MCEx; type: mc; file:/afs/desy.de/user/a/adraeger/dr_input/13TeV/Expectation_ttbar_wpj_singleTop.root ; tree: LostLeptonExpectation; weight: Weight
+dataset :: label: MuCSMTWDiLepCorrected; type: mcprediction; file:/afs/desy.de/user/a/adraeger/dr_input/13TeV/Prediction_ttbar_wpj_singleTop.root  ; tree: LostLeptonPrediction; weight: elecIsoWeight
 
 #############################################################################################################
 #special selection
-selection :: label: Baseline; cuts: selectedIDIsoMuonsNum > 0.5 ( MuCSMTWDiLepCorrected)+  selectedIDIsoMuonsNum < 1.5 (MuCSMTWDiLepCorrected) + selectedIDIsoElectronsNum < 0.5 (MuCSMTWDiLepCorrected) + elecIso <0.5 (MCEx) + MTW < 100 (MuCSMTWDiLepCorrected)
+selection :: label: Baseline_ElecIso; cuts: selectedIDIsoMuonsNum > 0.5 ( MuCSMTWDiLepCorrected)+  selectedIDIsoMuonsNum < 1.5 (MuCSMTWDiLepCorrected) + selectedIDIsoElectronsNum < 0.5 (MuCSMTWDiLepCorrected) + elecIso <0.5 (MCEx) + MTW < 100 (MuCSMTWDiLepCorrected)
 
 
 
 
 #############################################################################################################
-plot style :: dataset: MuCSMTWDiLepCorrected; plot label: Pred. e iso; color: kBlue+1
-plot style :: dataset: MCEx; plot label: t#bar{t}, W#rightarrowl#nu+jets Exp.; marker: 10; color: 1
+plot style :: dataset: MuCSMTWDiLepCorrected; plot label: t#bar{t},W,t(e/#mu+#nu) #mu CS Pre; color: kBlue+1
+plot style :: dataset: MCEx; plot label: t#bar{t},W,t(e/#mu+#nu) e Iso Exp.; marker: 10; color: 1
 
 #############################################################################################################
 
 plot :: variable: HT; data: MCEx; background:MuCSMTWDiLepCorrected; histogram: 25, 500, 3000, log
 plot :: variable: MHT; data: MCEx; background:MuCSMTWDiLepCorrected; histogram: 22, 200, 1300, log
 plot :: variable: MET; data: MCEx; background:MuCSMTWDiLepCorrected; histogram: 22, 200, 1300, log
-plot :: variable: NJets; data: MCEx; background:MuCSMTWDiLepCorrected; histogram: 10, 3, 13, log
+plot :: variable: NJets; data: MCEx; background:MuCSMTWDiLepCorrected; histogram: 9, 4, 13, log
 plot :: variable: BTags; data: MCEx; background:MuCSMTWDiLepCorrected; histogram: 5, 0, 5, log
 plot :: variable: MTW; data: MCEx; background:MuCSMTWDiLepCorrected; histogram: 40, 0, 200, log
 plot :: variable: NVtx; data: MCEx; background:MuCSMTWDiLepCorrected;  histogram: 25, -0.5, 49.5, log
-plot :: variable: Bin; data: MCEx; background: MuCSMTWDiLepCorrected; histogram: 72, 0, 72, log
+plot :: variable: Bin; data: MCEx; background: MuCSMTWDiLepCorrected; histogram: 71, 1, 72, log
 
 

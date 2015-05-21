@@ -1,0 +1,86 @@
+# Specify global parameters
+global :: id: Compare_Iso_elec
+global :: lumi: 4
+global :: publication status: Preliminary
+global :: output formats: pdf
+style :: plot yields: true 
+
+
+# Specify the variables that are read from the ntuple and their type
+event content :: name: HT; type: Float_t; label: H_{T}; unit: GeV
+event content :: name: MHT; type: Float_t; label: #slash{H}_{T}; unit: GeV
+event content :: name: MET; type: Float_t; label: #slash{E}_{T}; unit: GeV
+event content :: name: NJets; type: Int_t; label: N_{Jets}
+event content :: name: BTags; type: Int_t; label: BTags
+event content :: name: Bin; type: Int_t; label: Bin
+event content :: name: NVtx; type: UShort_t; label: N(Vtx)
+event content :: name: MTW; type: Float_t; label: M_{T}(w)
+
+# selection values
+event content :: name: elecIso; type: Int_t 
+
+event content :: name: Expectation; type: Int_t
+
+event content :: name: ExpectationReductionIsoTrack; type: Int_t
+
+#weights
+event content :: name: Weight; type: Float_t
+
+#prediction
+event content :: name: elecIsoWeight; type: Float_t
+event content :: name: mtwDiLepCorrectedWeight; type: Float_t
+
+event content :: name: selectedIDIsoMuonsNum; type: Int_t
+event content :: name: selectedIDIsoElectronsNum; type: Int_t
+#############################################################################################################
+# Specify the data source and label the type of data
+
+dataset :: label: MCExClassical; type: mc; file:/nfs/dust/cms/user/adraeger/phys14/mc/results/classicLepIso/2015/Expectation.root ; tree: LostLeptonExpectation; weight: Weight
+dataset :: label: MCExMini04Mu01Elec; type: mc; file:/nfs/dust/cms/user/adraeger/phys14/mc/results/miniIsolation/04Mu01Elec/2015/Expectation.root ; tree: LostLeptonExpectation; weight: Weight
+dataset :: label: MCExMini02Mu02Elec; type: mc; file:/nfs/dust/cms/user/adraeger/phys14/mc/results/miniIsolation/standard/2015/Expectation.root ; tree: LostLeptonExpectation; weight: Weight
+
+#############################################################################################################
+#special selection
+selection :: label: e not iso expectation; cuts:  elecIso <0.5 (MCExClassical, MCExMini04Mu01Elec, MCExMini02Mu02Elec)
+
+
+
+
+#############################################################################################################
+
+plot style :: dataset: MCExClassical; plot label: e old Iso_{Rel}= 0.16/0.21; marker: 10; color: 1
+plot style :: dataset: MCExMini04Mu01Elec; plot label: e miniIso Iso_{Rel}= 0.1; color: kBlue+1
+plot style :: dataset: MCExMini02Mu02Elec; plot label: e miniIso Iso_{Rel}= 0.2; color: kRed+1
+
+#############################################################################################################
+
+plot :: variable: HT; data: MCExClassical; background:MCExMini04Mu01Elec; histogram: 25, 500, 3000, log
+plot :: variable: MHT; data: MCExClassical; background:MCExMini04Mu01Elec; histogram: 22, 200, 1300, log
+plot :: variable: MET; data: MCExClassical; background:MCExMini04Mu01Elec; histogram: 22, 200, 1300, log
+plot :: variable: NJets; data: MCExClassical; background:MCExMini04Mu01Elec; histogram: 10, 3, 13, log
+plot :: variable: BTags; data: MCExClassical; background:MCExMini04Mu01Elec; histogram: 5, 0, 5, log
+plot :: variable: MTW; data: MCExClassical; background:MCExMini04Mu01Elec; histogram: 40, 0, 200, log
+plot :: variable: NVtx; data: MCExClassical; background:MCExMini04Mu01Elec;  histogram: 25, -0.5, 49.5, log
+plot :: variable: Bin; data: MCExClassical; background: MCExMini04Mu01Elec; histogram: 72, 0, 72, log
+
+
+plot :: variable: HT; data: MCExClassical; background:MCExMini02Mu02Elec; histogram: 25, 500, 3000, log
+plot :: variable: MHT; data: MCExClassical; background:MCExMini02Mu02Elec; histogram: 22, 200, 1300, log
+plot :: variable: MET; data: MCExClassical; background:MCExMini02Mu02Elec; histogram: 22, 200, 1300, log
+plot :: variable: NJets; data: MCExClassical; background:MCExMini02Mu02Elec; histogram: 10, 3, 13, log
+plot :: variable: BTags; data: MCExClassical; background:MCExMini02Mu02Elec; histogram: 5, 0, 5, log
+plot :: variable: MTW; data: MCExClassical; background:MCExMini02Mu02Elec; histogram: 40, 0, 200, log
+plot :: variable: NVtx; data: MCExClassical; background:MCExMini02Mu02Elec;  histogram: 25, -0.5, 49.5, log
+plot :: variable: Bin; data: MCExClassical; background: MCExMini02Mu02Elec; histogram: 72, 0, 72, log
+
+
+plot :: variable: HT; data: MCExMini04Mu01Elec; background:MCExMini02Mu02Elec; histogram: 25, 500, 3000, log
+plot :: variable: MHT; data: MCExMini04Mu01Elec; background:MCExMini02Mu02Elec; histogram: 22, 200, 1300, log
+plot :: variable: MET; data: MCExMini04Mu01Elec; background:MCExMini02Mu02Elec; histogram: 22, 200, 1300, log
+plot :: variable: NJets; data: MCExMini04Mu01Elec; background:MCExMini02Mu02Elec; histogram: 10, 3, 13, log
+plot :: variable: BTags; data: MCExMini04Mu01Elec; background:MCExMini02Mu02Elec; histogram: 5, 0, 5, log
+plot :: variable: MTW; data: MCExMini04Mu01Elec; background:MCExMini02Mu02Elec; histogram: 40, 0, 200, log
+plot :: variable: NVtx; data: MCExMini04Mu01Elec; background:MCExMini02Mu02Elec;  histogram: 25, -0.5, 49.5, log
+plot :: variable: Bin; data: MCExMini04Mu01Elec; background: MCExMini02Mu02Elec; histogram: 72, 0, 72, log
+
+

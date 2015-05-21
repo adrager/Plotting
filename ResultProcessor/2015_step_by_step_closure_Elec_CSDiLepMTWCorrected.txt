@@ -47,7 +47,7 @@ selection :: label: Baseline; cuts: selectedIDIsoElectronsNum > 0.5 ( ElecCSMTWD
 
 #############################################################################################################
 plot style :: dataset: ElecCSMTWDiLepCorrected; plot label: Pred. e CS corrected; color: kRed+1
-plot style :: dataset: MCEx; plot label: t#bar{t}, W#rightarrowl#nu+jets Exp.; marker: 10; color: 1
+plot style :: dataset: MCEx; plot label: t#bar{t}, W#rightarrowl#nu+jets e CS truth; marker: 10; color: 1
 
 #############################################################################################################
 

@@ -43,14 +43,14 @@ dataset :: label: MuCSMTWDiLepCorrected; type: mcprediction; file:/afs/desy.de/u
 
 #############################################################################################################
 #special selection
-selection :: label: Baseline; cuts: selectedIDIsoMuonsNum > 0.5 ( MuCSMTWDiLepCorrected)+  selectedIDIsoMuonsNum < 1.5 (MuCSMTWDiLepCorrected) + selectedIDIsoElectronsNum < 0.5 (MuCSMTWDiLepCorrected) + muIso > 1.5 (MCEx) + MTW < 100 (MuCSMTWDiLepCorrected, MCEx)
+selection :: label: Baseline; cuts: selectedIDIsoMuonsNum > 0.5 ( MuCSMTWDiLepCorrected)+  selectedIDIsoMuonsNum < 1.5 (MuCSMTWDiLepCorrected) + selectedIDIsoElectronsNum < 0.5 (MuCSMTWDiLepCorrected) + muIso > 1.5 (MCEx) + MTW < 100 (MuCSMTWDiLepCorrected)
 
 
 
 
 #############################################################################################################
 plot style :: dataset: MuCSMTWDiLepCorrected; plot label: Pred. #mu CS corrected; color: kBlue+1
-plot style :: dataset: MCEx; plot label: t#bar{t}, W#rightarrowl#nu+jets Exp.; marker: 10; color: 1
+plot style :: dataset: MCEx; plot label: t#bar{t}, W#rightarrowl#nu+jets #mu CS truth; marker: 10; color: 1
 
 #############################################################################################################
 

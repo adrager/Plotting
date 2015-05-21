@@ -433,7 +433,8 @@ void PlotBuilder::plotDataVsBkg(const TString &var, const DataSet *data, const D
     hRatioFrame->SetBinContent(xBin,0.);
   }
   hRatioFrame->GetXaxis()->SetTitle(hData->GetXaxis()->GetTitle());
-  hRatioFrame->GetYaxis()->SetRangeUser(-.50,0.95);
+	// hRatioFrame->GetYaxis()->SetRangeUser(-.50,0.95); May 15 2015
+  hRatioFrame->GetYaxis()->SetRangeUser(-1.0,0.95);
   hRatioFrame->SetLineStyle(1);
   hRatioFrame->SetLineColor(kBlack);
   hRatioFrame->SetLineWidth(1);
@@ -1086,6 +1087,8 @@ TString PlotBuilder::dataSetLegEntry(const TH1* h, const DataSet* ds) const {
  }
 //}
 //else   sprintf (entry,dataSetLabelInPlot(ds).Data());
+  // hack remove next line to print number of expected events in legend
+  sprintf (entry,dataSetLabelInPlot(ds).Data()); 
 
   return entry;
 }

@@ -1,0 +1,28 @@
+#!/bin/bash
+# My first script
+
+echo "Producing dr. plots"
+rm -r results
+./run 2015_dr_Baseline_AllSMProcesses.txt&
+./run 2015_dr_ll_background_Processes.txt&
+./run 2015_dr_ll_CS_vs_Expectation.txt&
+./run 2015_dr_ll_Closure.txt&
+./run 2015_dr_ll_Closure_Combined.txt&
+./run 2015_dr_ll_Closure_Combined_IsoTrackReduced.txt&
+
+./run 2015_dr_ll_closure_Mu_MuIso.txt&
+./run 2015_dr_ll_closure_Mu_MuReco.txt&
+./run 2015_dr_ll_closure_Mu_MuAcc.txt&
+./run 2015_dr_ll_closure_Mu_ElecAcc.txt&
+./run 2015_dr_ll_closure_Mu_ElecReco.txt&
+./run 2015_dr_ll_closure_Mu_ElecIso.txt&
+wait
+./run 2015_dr_ll_closure_Elec_MuIso.txt&
+./run 2015_dr_ll_closure_Elec_MuReco.txt&
+./run 2015_dr_ll_closure_Elec_MuAcc.txt&
+./run 2015_dr_ll_closure_Elec_ElecAcc.txt&
+./run 2015_dr_ll_closure_Elec_ElecReco.txt&
+./run 2015_dr_ll_closure_Elec_ElecIso.txt&
+wait
+
+echo "done."

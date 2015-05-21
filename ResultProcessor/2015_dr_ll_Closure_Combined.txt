@@ -1,5 +1,5 @@
 # Specify global parameters
-global :: id: Closure_Combined_isoTrackVetoApplied
+global :: id: Closure
 global :: lumi: 4
 global :: publication status: Preliminary
 global :: output formats: eps, pdf
@@ -33,27 +33,27 @@ event content :: name: selectedIDIsoElectronsNum; type: Int_t
 #############################################################################################################
 # Specify the data source and label the type of data
 
-dataset :: label: MCEx; type: mc; file:/afs/desy.de/user/a/adraeger/2015/Expectation.root ; tree: LostLeptonExpectation; weight: Weight
-dataset :: label: MuPrMTWDiLep; type: mcprediction; file:/afs/desy.de/user/a/adraeger/2015/Prediction.root  ; tree: LostLeptonPrediction; weight: totalWeightDiLepIsoTrackReduced ; scale:0.5
-dataset :: label: ElecPrMTWDiLep; type: mcprediction; file:/afs/desy.de/user/a/adraeger/2015/Prediction.root  ; tree: LostLeptonPrediction; weight: totalWeightDiLepIsoTrackReduced ; scale:0.5
+dataset :: label: MCEx; type: mc; file:/afs/desy.de/user/a/adraeger/dr_input/13TeV/Expectation_ttbar_wpj_singleTop.root; tree: LostLeptonExpectation; weight: Weight
+dataset :: label: MuPrMTWDiLep; type: mcprediction; file:/afs/desy.de/user/a/adraeger/dr_input/13TeV/Prediction_ttbar_wpj_singleTop.root  ; tree: LostLeptonPrediction; weight: totalWeightDiLep ; scale:0.5
+dataset :: label: ElecPrMTWDiLep; type: mcprediction; file:/afs/desy.de/user/a/adraeger/dr_input/13TeV/Prediction_ttbar_wpj_singleTop.root  ; tree: LostLeptonPrediction; weight: totalWeightDiLep ; scale:0.5
 
 #############################################################################################################
 #special selection
-selection :: label: Baseline; cuts: Expectation < 1.5 (MCEx) + Expectation > 0.5 (MCEx) + ExpectationReductionIsoTrack < 0.5 (MCEx) + NJets > 3.1 + MHT > 100 + HT > 500   + MTW < 100 ( MuPrMTWDiLep, ElecPrMTWDiLep) + selectedIDIsoMuonsNum > 0.5 ( MuPrMTWDiLep)+  selectedIDIsoMuonsNum < 1.5 ( MuPrMTWDiLep) + selectedIDIsoElectronsNum < 0.5 ( MuPrMTWDiLep) +  selectedIDIsoMuonsNum <0.5(ElecPrMTWDiLep) + selectedIDIsoElectronsNum >0.5 (ElecPrMTWDiLep) + selectedIDIsoElectronsNum < 1.5 (ElecPrMTWDiLep)
+selection :: label: Baseline; cuts: Expectation < 1.5 (MCEx) + Expectation > 0.5 (MCEx) + NJets > 3.1 + MHT > 100 + HT > 500   + MTW < 100 ( MuPrMTWDiLep, ElecPrMTWDiLep) + selectedIDIsoMuonsNum > 0.5 ( MuPrMTWDiLep)+  selectedIDIsoMuonsNum < 1.5 ( MuPrMTWDiLep) + selectedIDIsoElectronsNum < 0.5 ( MuPrMTWDiLep) +  selectedIDIsoMuonsNum <0.5(ElecPrMTWDiLep) + selectedIDIsoElectronsNum >0.5 (ElecPrMTWDiLep) + selectedIDIsoElectronsNum < 1.5 (ElecPrMTWDiLep)
 
 
 
 #############################################################################################################
-plot style :: dataset: ElecPrMTWDiLep; plot label: Pred. e CS; color: kRed+1
-plot style :: dataset: MuPrMTWDiLep; plot label: Pred. #mu CS; color: kBlue+1
-plot style :: dataset: MCEx; plot label: t#bar{t}, t/#bar{t}, W#rightarrowl#nu+jets; marker: 10; color: 1
+plot style :: dataset: ElecPrMTWDiLep; plot label: t#bar{t},W,t(e/#mu+#nu) e CS Pre.; color: kRed+1
+plot style :: dataset: MuPrMTWDiLep; plot label: t#bar{t},W,t(e/#mu+#nu) #mu CS Pre.; color: kBlue+1
+plot style :: dataset: MCEx; plot label: t#bar{t},W,t(e/#mu+#nu) Exp.; marker: 10; color: 1
 
 #############################################################################################################
 
 plot :: variable: HT; data: MCEx; background: MuPrMTWDiLep + ElecPrMTWDiLep; histogram: 25, 500, 3000, log
 plot :: variable: MHT; data: MCEx; background: MuPrMTWDiLep + ElecPrMTWDiLep; histogram: 22, 200, 1300, log
 plot :: variable: MET; data: MCEx; background: MuPrMTWDiLep + ElecPrMTWDiLep; histogram: 22, 200, 1300, log
-plot :: variable: NJets; data: MCEx; background: MuPrMTWDiLep + ElecPrMTWDiLep; histogram: 10, 3, 13, log
+plot :: variable: NJets; data: MCEx; background: MuPrMTWDiLep + ElecPrMTWDiLep; histogram: 9, 4, 13, log
 plot :: variable: BTags; data: MCEx; background: MuPrMTWDiLep + ElecPrMTWDiLep; histogram: 5, 0, 5, log
 plot :: variable: MTW; data: MCEx; background: MuPrMTWDiLep + ElecPrMTWDiLep; histogram: 40, 0, 200, log
 plot :: variable: NVtx; data: MCEx; background: MuPrMTWDiLep + ElecPrMTWDiLep;  histogram: 25, -0.5, 49.5, log

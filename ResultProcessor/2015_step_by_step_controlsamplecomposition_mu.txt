@@ -1,0 +1,70 @@
+# Specify global parameters
+global :: id: mu_controlsample_composition
+global :: lumi: 4
+global :: publication status: Preliminary
+global :: output formats: pdf
+style :: plot yields: true 
+
+
+# Specify the variables that are read from the ntuple and their type
+event content :: name: HT; type: Float_t; label: H_{T}; unit: GeV
+event content :: name: MHT; type: Float_t; label: #slash{H}_{T}; unit: GeV
+event content :: name: MET; type: Float_t; label: #slash{E}_{T}; unit: GeV
+event content :: name: NJets; type: Int_t; label: N_{Jets}
+event content :: name: BTags; type: Int_t; label: BTags
+event content :: name: Bin; type: Int_t; label: Bin
+event content :: name: NVtx; type: UShort_t; label: N(Vtx)
+event content :: name: MTW; type: Float_t; label: M_{T}(w)
+
+# selection values
+
+event content :: name: GenMuNum; type: Int_t 
+event content :: name: GenElecNum; type: Int_t 
+event content :: name: muIso; type: Int_t 
+event content :: name: MuDiLepControlSample; type: Int_t 
+
+event content :: name: selectedIDIsoMuonsNum; type: Int_t
+event content :: name: selectedIDIsoElectronsNum; type: Int_t
+
+
+
+#weights
+event content :: name: Weight; type: Float_t
+
+#############################################################################################################
+# Specify the data source and label the type of data
+
+dataset :: label: MuCS; type: mcprediction; file:/afs/desy.de/user/a/adraeger/2015/Expectation.root ; tree: LostLeptonExpectation; weight: Weight
+
+dataset :: label: MuCSDiLep; type: mcprediction; file:/afs/desy.de/user/a/adraeger/2015/Expectation.root ; tree: LostLeptonExpectation; weight: Weight
+Weight
+dataset :: label: MuCSTotal; type: mc; file:/afs/desy.de/user/a/adraeger/2015/Expectation.root ; tree: LostLeptonExpectation; weight: Weight
+Weight
+
+
+#############################################################################################################
+#special selection
+selection :: label: Baseline; cuts: selectedIDIsoMuonsNum >0.5 + selectedIDIsoMuonsNum < 1.5 +  selectedIDIsoElectronsNum < 0.5 + muIso >1.5 (MuCS) + MuDiLepControlSample < 0.5 (MuCSDiLep) 
+
+selection :: label: Baseline_mtCut; cuts: selectedIDIsoMuonsNum >0.5 + selectedIDIsoMuonsNum < 1.5 +  selectedIDIsoElectronsNum < 0.5 + muIso >1.5 (MuCS) + MuDiLepControlSample < 0.5 (MuCSDiLep) + MTW<100
+
+
+
+#############################################################################################################
+
+plot style :: dataset: MuCSTotal; plot label: t#bar{t}, W#rightarrowl#nu+jets #mu CS total; marker: 10; color: 1
+plot style :: dataset: MuCS; plot label: #mu CS (matched); color: kBlue+1
+plot style :: dataset: MuCSDiLep; plot label: #mu CS di-lep; color: kRed+1
+
+#############################################################################################################
+
+plot :: variable: HT; data: MuCSTotal; background:MuCSDiLep + MuCS; histogram: 25, 500, 3000, log
+plot :: variable: MHT; data: MuCSTotal; background:MuCSDiLep + MuCS; histogram: 22, 200, 1300, log
+plot :: variable: MET; data: MuCSTotal; background:MuCSDiLep + MuCS; histogram: 22, 200, 1300, log
+plot :: variable: NJets; data: MuCSTotal; background:MuCSDiLep + MuCS; histogram: 10, 3, 13, log
+plot :: variable: BTags; data: MuCSTotal; background:MuCSDiLep + MuCS; histogram: 5, 0, 5, log
+plot :: variable: MTW; data: MuCSTotal; background:MuCSDiLep + MuCS; histogram: 40, 0, 200, log
+plot :: variable: NVtx; data: MuCSTotal; background:MuCSDiLep + MuCS;  histogram: 25, -0.5, 49.5, log
+plot :: variable: Bin; data: MuCSTotal; background: MuCSDiLep + MuCS; histogram: 72, 0, 72, log
+
+

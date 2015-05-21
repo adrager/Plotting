@@ -18,6 +18,13 @@ echo "Producing necessary closures!"
 ./run 2015_step_by_step_closure_Elec_ElecAcc.txt&
 ./run 2015_step_by_step_closure_Elec_ElecReco.txt&
 ./run 2015_step_by_step_closure_Elec_ElecIso.txt&
+./run 2015_step_by_step_closure_Mu_MTW_T1ttt_1200_800.txt&
+./run 2015_step_by_step_closure_Mu_MTW_T1ttt_1500_100.txt&
+./run 2015_step_by_step_closure_Elec_MTW_T1ttt_1200_800.txt&
+./run 2015_step_by_step_closure_Elec_MTW_T1ttt_1500_100.txt&
+./run 2015_step_by_step_backgroundcomposition.txt&
+./run 2015_step_by_step_controlsamplecomposition_elec.txt&
+./run 2015_step_by_step_controlsamplecomposition_mu.txt&
 wait
 ./run 2015_step_by_step_closure_Elec_CSPurity.txt&
 ./run 2015_step_by_step_closure_Mu_CSPurity.txt&

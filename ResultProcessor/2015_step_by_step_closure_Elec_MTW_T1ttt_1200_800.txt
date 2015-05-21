@@ -1,0 +1,71 @@
+# Specify global parameters
+global :: id: Closure_Step_By_Step_Elec
+global :: lumi: 4
+global :: publication status: Preliminary
+global :: output formats: pdf
+style :: plot yields: true 
+
+
+# Specify the variables that are read from the ntuple and their type
+event content :: name: HT; type: Float_t; label: H_{T}; unit: GeV
+event content :: name: MHT; type: Float_t; label: #slash{H}_{T}; unit: GeV
+event content :: name: MET; type: Float_t; label: #slash{E}_{T}; unit: GeV
+event content :: name: NJets; type: Int_t; label: N_{Jets}
+event content :: name: BTags; type: Int_t; label: BTags
+event content :: name: Bin; type: Int_t; label: Bin
+event content :: name: NVtx; type: UShort_t; label: N(Vtx)
+event content :: name: MTW; type: Float_t; label: M_{T}(w)
+
+# selection values
+event content :: name: muIso; type: Int_t 
+
+event content :: name: Expectation; type: Int_t
+
+event content :: name: ExpectationReductionIsoTrack; type: Int_t
+
+#weights
+event content :: name: Weight; type: Float_t
+
+#prediction
+event content :: name: muIsoWeight; type: Float_t
+event content :: name: mtwDiLepCorrectedWeight; type: Float_t
+
+event content :: name: selectedIDIsoMuonsNum; type: Int_t
+event content :: name: selectedIDIsoElectronsNum; type: Int_t
+#############################################################################################################
+# Specify the data source and label the type of data
+
+dataset :: label: MCEx; type: mc; file:/afs/desy.de/user/a/adraeger/2015/Expectation.root ; tree: LostLeptonExpectation; weight: Weight
+dataset :: label: ElecCSWPJ; type: mcprediction; file:/afs/desy.de/user/a/adraeger/2015/wpj/Prediction.root  ; tree: LostLeptonPrediction; weight: Weight
+dataset :: label: ElecCSTTbar; type: mcprediction; file:/afs/desy.de/user/a/adraeger/2015/ttbar/Prediction.root  ; tree: LostLeptonPrediction; weight: Weight
+dataset :: label: ElecCST1tttt_2J_mGl-1500_mLSP-100; type: signal; file:/afs/desy.de/user/a/adraeger/2015/T1tttt_2J_mGl-1500_mLSP-100/Prediction.root  ; tree: LostLeptonPrediction; weight: Weight
+dataset :: label: ElecCST1tttt_2J_mGl-1200_mLSP-800; type: signal; file:/afs/desy.de/user/a/adraeger/2015/T1tttt_2J_mGl-1200_mLSP-800/Prediction.root  ; tree: LostLeptonPrediction; weight: Weight
+
+#############################################################################################################
+#special selection
+selection :: label: T1tttt_mgl-1200_mLSP-100_MTW_off; cuts: selectedIDIsoElectronsNum > 0.5 ( ElecCSWPJ, ElecCSTTbar, ElecCST1tttt_2J_mGl-1500_mLSP-100, ElecCST1tttt_2J_mGl-1200_mLSP-800)+  selectedIDIsoElectronsNum < 1.5 (ElecCSWPJ, ElecCSTTbar, ElecCST1tttt_2J_mGl-1500_mLSP-100, ElecCST1tttt_2J_mGl-1200_mLSP-800) + selectedIDIsoMuonsNum < 0.5 (ElecCSWPJ, ElecCSTTbar, ElecCST1tttt_2J_mGl-1500_mLSP-100, ElecCST1tttt_2J_mGl-1200_mLSP-800) + Expectation < 1.5 (MCEx) + Expectation > 0.5 (MCEx)
+# + MTW < 100 (ElecCSWPJ, ElecCSTTbar)
+selection :: label: T1tttt_mgl-1200_mLSP-100_MTW_on; cuts: T1tttt_mgl-1200_mLSP-100_MTW_off + MTW < 100 (ElecCSWPJ, ElecCSTTbar, ElecCST1tttt_2J_mGl-1500_mLSP-100, ElecCST1tttt_2J_mGl-1200_mLSP-800)
+
+
+
+#############################################################################################################
+plot style :: dataset: ElecCSWPJ; plot label: W#rightarrowl#nu+jets e CS; color: kBlue+1
+plot style :: dataset: ElecCSTTbar; plot label: t#bar{t} e CS; color: kRed+1
+plot style :: dataset: MCEx; plot label: t#bar{t}, W#rightarrowl#nu+jets Exp.; marker: 10; color: 1
+plot style :: dataset: ElecCST1tttt_2J_mGl-1500_mLSP-100; plot label:pp#rightarrow#tilde{g}#tilde{g}, #tilde{g}#rightarrowt#bar{t}#tilde{#chi}^{0}_{1} e CS; color: kGreen 
+plot style :: dataset: ElecCST1tttt_2J_mGl-1200_mLSP-800; plot label:pp#rightarrow#tilde{g}#tilde{g}, #tilde{g}#rightarrowt#bar{t}#tilde{#chi}^{0}_{1} e CS; color: kYellow 
+
+#############################################################################################################
+
+plot :: variable: HT; data: MCEx; background:ElecCSWPJ + ElecCSTTbar;signals: ElecCST1tttt_2J_mGl-1200_mLSP-800  ; histogram: 25, 500, 3000, log
+plot :: variable: MHT; data: MCEx; background:ElecCSWPJ + ElecCSTTbar;signals: ElecCST1tttt_2J_mGl-1200_mLSP-800 ; histogram: 22, 200, 1300, log
+plot :: variable: MET; data: MCEx; background:ElecCSWPJ + ElecCSTTbar;signals: ElecCST1tttt_2J_mGl-1200_mLSP-800 ; histogram: 22, 200, 1300, log
+plot :: variable: NJets; data: MCEx; background:ElecCSWPJ + ElecCSTTbar;signals: ElecCST1tttt_2J_mGl-1200_mLSP-800 ; histogram: 10, 3, 13, log
+plot :: variable: BTags; data: MCEx; background:ElecCSWPJ + ElecCSTTbar;signals: ElecCST1tttt_2J_mGl-1200_mLSP-800 ; histogram: 5, 0, 5, log
+plot :: variable: MTW; data: MCEx; background:ElecCSWPJ + ElecCSTTbar;signals: ElecCST1tttt_2J_mGl-1200_mLSP-800 ; histogram: 40, 0, 200, log
+plot :: variable: NVtx; data: MCEx; background:ElecCSWPJ + ElecCSTTbar;signals: ElecCST1tttt_2J_mGl-1200_mLSP-800 ;  histogram: 25, -0.5, 49.5, log
+plot :: variable: Bin; data: MCEx; background: ElecCSWPJ + ElecCSTTbar;signals: ElecCST1tttt_2J_mGl-1200_mLSP-800 ; histogram: 72, 0, 72, log
+
+
+

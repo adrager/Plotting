@@ -41,6 +41,8 @@ event content :: name: selectedIDIsoElectronsNum; type: Int_t
 dataset :: label: ElecCSMTWDiLepCorrected; type: mc; file:/afs/desy.de/user/a/adraeger/2015/Prediction.root  ; tree: LostLeptonPrediction; weight: mtwDiLepCorrectedWeight
 dataset :: label: ElecCSMTWDiLepCorrectedWPJ; type: mcprediction; file:/afs/desy.de/user/a/adraeger/2015/wpj/Prediction.root  ; tree: LostLeptonPrediction; weight: mtwDiLepCorrectedWeight
 dataset :: label: ElecCSMTWDiLepCorrectedTTbar; type: mcprediction; file:/afs/desy.de/user/a/adraeger/2015/ttbar/Prediction.root  ; tree: LostLeptonPrediction; weight: mtwDiLepCorrectedWeight
+dataset :: label: ElecCSMTWDiLepCorrectedSingleT; type: mcprediction; file:/afs/desy.de/user/a/adraeger/2015/singleTop/Prediction.root  ; tree: LostLeptonPrediction; weight: mtwDiLepCorrectedWeight
+
 dataset :: label: ElecCSMTWDiLepCorrectedQCD; type: mcprediction; file:/afs/desy.de/user/a/adraeger/2015/qcd/Prediction.root  ; tree: LostLeptonPrediction; weight: mtwDiLepCorrectedWeight
 
 #############################################################################################################
@@ -54,17 +56,18 @@ selection :: label: Purity; cuts: selectedIDIsoElectronsNum > 0.5 +  selectedIDI
 plot style :: dataset: ElecCSMTWDiLepCorrected; plot label: t#bar{t}, W#rightarrowl#nu+jets e CS; marker: 10; color: 1
 plot style :: dataset: ElecCSMTWDiLepCorrectedWPJ; plot label: W#rightarrowl#nu+jets e CS corrected; color: kBlue+1
 plot style :: dataset: ElecCSMTWDiLepCorrectedTTbar; plot label: t#bar{t} e CS corrected; color: kRed+1
+plot style :: dataset: ElecCSMTWDiLepCorrectedSingleT; plot label: single t e CS corrected; color: kYellow
 plot style :: dataset: ElecCSMTWDiLepCorrectedQCD; plot label: qcd e CS corrected; color: kGray+1
 
 #############################################################################################################
 
-plot :: variable: HT; data: ElecCSMTWDiLepCorrected; background:ElecCSMTWDiLepCorrectedWPJ + ElecCSMTWDiLepCorrectedTTbar + ElecCSMTWDiLepCorrectedQCD; histogram: 25, 500, 3000, log
-plot :: variable: MHT; data: ElecCSMTWDiLepCorrected; background:ElecCSMTWDiLepCorrectedWPJ + ElecCSMTWDiLepCorrectedTTbar + ElecCSMTWDiLepCorrectedQCD; histogram: 22, 200, 1300, log
-plot :: variable: MET; data: ElecCSMTWDiLepCorrected; background:ElecCSMTWDiLepCorrectedWPJ + ElecCSMTWDiLepCorrectedTTbar + ElecCSMTWDiLepCorrectedQCD; histogram: 22, 200, 1300, log
-plot :: variable: NJets; data: ElecCSMTWDiLepCorrected; background:ElecCSMTWDiLepCorrectedWPJ + ElecCSMTWDiLepCorrectedTTbar + ElecCSMTWDiLepCorrectedQCD; histogram: 10, 3, 13, log
-plot :: variable: BTags; data: ElecCSMTWDiLepCorrected; background:ElecCSMTWDiLepCorrectedWPJ + ElecCSMTWDiLepCorrectedTTbar + ElecCSMTWDiLepCorrectedQCD; histogram: 5, 0, 5, log
-plot :: variable: MTW; data: ElecCSMTWDiLepCorrected; background:ElecCSMTWDiLepCorrectedWPJ + ElecCSMTWDiLepCorrectedTTbar + ElecCSMTWDiLepCorrectedQCD; histogram: 40, 0, 200, log
-plot :: variable: NVtx; data: ElecCSMTWDiLepCorrected; background:ElecCSMTWDiLepCorrectedWPJ + ElecCSMTWDiLepCorrectedTTbar + ElecCSMTWDiLepCorrectedQCD;  histogram: 25, -0.5, 49.5, log
-plot :: variable: Bin; data: ElecCSMTWDiLepCorrected; background: ElecCSMTWDiLepCorrectedWPJ + ElecCSMTWDiLepCorrectedTTbar + ElecCSMTWDiLepCorrectedQCD; histogram: 72, 0, 72, log
+plot :: variable: HT; data: ElecCSMTWDiLepCorrected; background:ElecCSMTWDiLepCorrectedWPJ + ElecCSMTWDiLepCorrectedTTbar + ElecCSMTWDiLepCorrectedSingleT; histogram: 25, 500, 3000, log
+plot :: variable: MHT; data: ElecCSMTWDiLepCorrected; background:ElecCSMTWDiLepCorrectedWPJ + ElecCSMTWDiLepCorrectedTTbar + ElecCSMTWDiLepCorrectedSingleT; histogram: 22, 200, 1300, log
+plot :: variable: MET; data: ElecCSMTWDiLepCorrected; background:ElecCSMTWDiLepCorrectedWPJ + ElecCSMTWDiLepCorrectedTTbar + ElecCSMTWDiLepCorrectedSingleT; histogram: 22, 200, 1300, log
+plot :: variable: NJets; data: ElecCSMTWDiLepCorrected; background:ElecCSMTWDiLepCorrectedWPJ + ElecCSMTWDiLepCorrectedTTbar + ElecCSMTWDiLepCorrectedSingleT; histogram: 10, 3, 13, log
+plot :: variable: BTags; data: ElecCSMTWDiLepCorrected; background:ElecCSMTWDiLepCorrectedWPJ + ElecCSMTWDiLepCorrectedTTbar + ElecCSMTWDiLepCorrectedSingleT; histogram: 5, 0, 5, log
+plot :: variable: MTW; data: ElecCSMTWDiLepCorrected; background:ElecCSMTWDiLepCorrectedWPJ + ElecCSMTWDiLepCorrectedTTbar + ElecCSMTWDiLepCorrectedSingleT; histogram: 40, 0, 200, log
+plot :: variable: NVtx; data: ElecCSMTWDiLepCorrected; background:ElecCSMTWDiLepCorrectedWPJ + ElecCSMTWDiLepCorrectedTTbar + ElecCSMTWDiLepCorrectedSingleT;  histogram: 25, -0.5, 49.5, log
+plot :: variable: Bin; data: ElecCSMTWDiLepCorrected; background: ElecCSMTWDiLepCorrectedWPJ + ElecCSMTWDiLepCorrectedTTbar + ElecCSMTWDiLepCorrectedSingleT; histogram: 72, 0, 72, log
 
 
