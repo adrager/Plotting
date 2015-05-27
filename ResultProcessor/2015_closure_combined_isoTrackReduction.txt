@@ -33,7 +33,7 @@ event content :: name: selectedIDIsoElectronsNum; type: Int_t
 #############################################################################################################
 # Specify the data source and label the type of data
 
-dataset :: label: MCEx; type: mc; file:/afs/desy.de/user/a/adraeger/2015/Expectation.root ; tree: LostLeptonExpectation; weight: Weight
+dataset :: label: MCEx; type: data; file:/afs/desy.de/user/a/adraeger/2015/Expectation.root ; tree: LostLeptonExpectation; weight: Weight
 dataset :: label: MuPrMTWDiLep; type: mcprediction; file:/afs/desy.de/user/a/adraeger/2015/Prediction.root  ; tree: LostLeptonPrediction; weight: totalWeightDiLepIsoTrackReduced ; scale:0.5
 dataset :: label: ElecPrMTWDiLep; type: mcprediction; file:/afs/desy.de/user/a/adraeger/2015/Prediction.root  ; tree: LostLeptonPrediction; weight: totalWeightDiLepIsoTrackReduced ; scale:0.5
 
