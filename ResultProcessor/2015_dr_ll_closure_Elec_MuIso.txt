@@ -1,0 +1,65 @@
+# Specify global parameters
+global :: id: Closure_Step_By_Step_Elec
+global :: lumi: 4
+global :: publication status: Preliminary
+global :: output formats: pdf
+style :: plot yields: true 
+
+
+# Specify the variables that are read from the ntuple and their type
+variable :: name: HT; type: Float_t; label: H_{T}; unit: GeV
+variable :: name: MHT; type: Float_t; label: #slash{H}_{T}; unit: GeV
+variable :: name: MET; type: Float_t; label: #slash{E}_{T}; unit: GeV
+variable :: name: NJets; type: Int_t; label: N_{Jets}
+variable :: name: BTags; type: Int_t; label: BTags
+variable :: name: Bin; type: Int_t; label: Bin
+variable :: name: NVtx; type: UShort_t; label: N(Vtx)
+variable :: name: MTW; type: Float_t; label: M_{T}(w)
+
+# selection values
+variable :: name: muIso; type: Int_t 
+
+variable :: name: Expectation; type: Int_t
+
+variable :: name: ExpectationReductionIsoTrack; type: Int_t
+
+#weights
+variable :: name: Weight; type: Float_t
+
+#prediction
+variable :: name: muIsoWeight; type: Float_t
+variable :: name: mtwDiLepCorrectedWeight; type: Float_t
+
+variable :: name: selectedIDIsoMuonsNum; type: Int_t
+variable :: name: selectedIDIsoElectronsNum; type: Int_t
+#############################################################################################################
+# Specify the data source and label the type of data
+
+dataset :: label: MCEx; type: mc; files:/afs/desy.de/user/a/adraeger/dr_input/13TeV/Expectation_ttbar_wpj_singleTop.root ; tree: LostLeptonExpectation; weight: Weight
+dataset :: label: ElecCSMTWDiLepCorrected; type: mcprediction; files:/afs/desy.de/user/a/adraeger/dr_input/13TeV/Prediction_ttbar_wpj_singleTop.root  ; tree: LostLeptonPrediction; weight: muIsoWeight
+
+#############################################################################################################
+#special selection
+#selection :: label: Baseline_MuIso; cuts: selectedIDIsoElectronsNum > 0.5 ( ElecCSMTWDiLepCorrected)+  selectedIDIsoElectronsNum < 1.5 (ElecCSMTWDiLepCorrected) + selectedIDIsoMuonsNum  < 0.5 (ElecCSMTWDiLepCorrected) + muIso <0.5 (MCEx) + MTW < 100 (ElecCSMTWDiLepCorrected)
+selection :: label: temp2; cuts:  muIso < 0.5; apply to: MCEx
+selection :: label: temp; cuts:  selectedIDIsoElectronsNum==1 && selectedIDIsoMuonsNum==0 && MTW < 100; apply to: ElecCSMTWDiLepCorrected
+selection :: label: Baseline_MuIso; cuts: temp && temp2 &&  NJets > 3.1 && MHT > 100 && HT > 500
+
+
+
+#############################################################################################################
+style :: dataset: ElecCSMTWDiLepCorrected; plot label: t#bar{t},W,t(e/#mu+#nu) e CS Pre; color: kRed+1
+style :: dataset: MCEx; plot label: t#bar{t},W,t(e/#mu+#nu) #mu Iso Exp.; marker: 10; color: 1
+
+#############################################################################################################
+
+plot :: variable: HT; data: MCEx; background:ElecCSMTWDiLepCorrected; histogram: 25, 500, 3000, log
+plot :: variable: MHT; data: MCEx; background:ElecCSMTWDiLepCorrected; histogram: 22, 200, 1300, log
+plot :: variable: MET; data: MCEx; background:ElecCSMTWDiLepCorrected; histogram: 22, 200, 1300, log
+plot :: variable: NJets; data: MCEx; background:ElecCSMTWDiLepCorrected; histogram: 9, 4, 13, log
+plot :: variable: BTags; data: MCEx; background:ElecCSMTWDiLepCorrected; histogram: 5, 0, 5, log
+plot :: variable: MTW; data: MCEx; background:ElecCSMTWDiLepCorrected; histogram: 40, 0, 200, log
+plot :: variable: NVtx; data: MCEx; background:ElecCSMTWDiLepCorrected;  histogram: 25, -0.5, 49.5, log
+plot :: variable: Bin; data: MCEx; background: ElecCSMTWDiLepCorrected; histogram: 71, 1, 72, log
+
+
