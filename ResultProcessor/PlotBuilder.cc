@@ -950,7 +950,7 @@ TPaveText* PlotBuilder::header(bool isSimulation, bool showLumi, const TString &
   }
   if( line.Length() ) line += ",  ";
 //   line += "8 TeV";
-	line += "#sqrt{s} = 13 TeV}";
+	line += "#sqrt{s} = 13 TeV";
   if( info.Length() ) line += ",  "+info;
 
   double x0 = gStyle->GetPadLeftMargin();
