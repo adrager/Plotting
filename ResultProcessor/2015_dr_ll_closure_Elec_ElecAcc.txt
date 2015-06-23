@@ -35,8 +35,8 @@ variable :: name: selectedIDIsoElectronsNum; type: Int_t
 #############################################################################################################
 # Specify the data source and label the type of data
 
-dataset :: label: MCEx; type: mc; files:/afs/desy.de/user/a/adraeger/dr_input/13TeV/Expectation_ttbar_wpj_singleTop.root ; tree: LostLeptonExpectation; weight: Weight
-dataset :: label: ElecCSMTWDiLepCorrected; type: mcprediction; files:/afs/desy.de/user/a/adraeger/dr_input/13TeV/Prediction_ttbar_wpj_singleTop.root  ; tree: LostLeptonPrediction; weight: elecAccWeight
+dataset :: label: MCEx; type: mc; files:/afs/desy.de/user/a/adraeger/dr_input/13TeV/final_version/Expectation_ttbar_wpj_singleTop.root ; tree: LostLeptonExpectation; weight: Weight
+dataset :: label: ElecCSMTWDiLepCorrected; type: mcprediction; files:/afs/desy.de/user/a/adraeger/dr_input/13TeV/final_version/Prediction_ttbar_wpj_singleTop.root  ; tree: LostLeptonPrediction; weight: elecAccWeight
 
 #############################################################################################################
 #special selection

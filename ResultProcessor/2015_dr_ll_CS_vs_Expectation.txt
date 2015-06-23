@@ -32,9 +32,9 @@ variable :: name: Weight; type: Float_t
 #############################################################################################################
 # Specify the data source and label the type of data
 
-dataset :: label: MCExTotal; type: mc; files:/afs/desy.de/user/a/adraeger/dr_input/13TeV/Expectation_ttbar_wpj_singleTop.root; tree: LostLeptonExpectation; weight: Weight
-dataset :: label: MCMuCS; type: mcprediction; files:/afs/desy.de/user/a/adraeger/dr_input/13TeV/Prediction_ttbar_wpj_singleTop.root; tree: LostLeptonPrediction; weight: Weight
-dataset :: label: MCElecCS; type: mcprediction; files:/afs/desy.de/user/a/adraeger/dr_input/13TeV/Prediction_ttbar_wpj_singleTop.root; tree: LostLeptonPrediction; weight: Weight
+dataset :: label: MCExTotal; type: mc; files:/afs/desy.de/user/a/adraeger/dr_input/13TeV/final_version/Expectation_ttbar_wpj_singleTop.root; tree: LostLeptonExpectation; weight: Weight
+dataset :: label: MCMuCS; type: mcprediction; files:/afs/desy.de/user/a/adraeger/dr_input/13TeV/final_version/Prediction_ttbar_wpj_singleTop.root; tree: LostLeptonPrediction; weight: Weight
+dataset :: label: MCElecCS; type: mcprediction; files:/afs/desy.de/user/a/adraeger/dr_input/13TeV/final_version/Prediction_ttbar_wpj_singleTop.root; tree: LostLeptonPrediction; weight: Weight
 
 #############################################################################################################
 #special selection

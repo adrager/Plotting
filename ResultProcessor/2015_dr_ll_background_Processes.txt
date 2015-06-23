@@ -29,10 +29,10 @@ variable :: name: Weight; type: Float_t
 #############################################################################################################
 # Specify the data source and label the type of data
 
-dataset :: label: MCExTotal; type: mc; files:/afs/desy.de/user/a/adraeger/dr_input/13TeV/Expectation_ttbar_wpj_singleTop.root; tree: LostLeptonExpectation; weight: Weight
-dataset :: label: MCExTTbar; type: mc; files:/afs/desy.de/user/a/adraeger/dr_input/13TeV/ttbar/Expectation.root; tree: LostLeptonExpectation; weight: Weight
-dataset :: label: MCExWpj; type: mc; files:/afs/desy.de/user/a/adraeger/dr_input/13TeV/wpj/Expectation.root; tree: LostLeptonExpectation; weight: Weight
-dataset :: label: MCExSingleTop; type: mc; files:/afs/desy.de/user/a/adraeger/dr_input/13TeV/singleTop/Expectation.root; tree: LostLeptonExpectation; weight: Weight
+dataset :: label: MCExTotal; type: mc; files:/afs/desy.de/user/a/adraeger/dr_input/13TeV/final_version/Expectation_ttbar_wpj_singleTop.root; tree: LostLeptonExpectation; weight: Weight
+dataset :: label: MCExTTbar; type: mc; files:/afs/desy.de/user/a/adraeger/dr_input/13TeV/final_version/ttbar/Expectation.root; tree: LostLeptonExpectation; weight: Weight
+dataset :: label: MCExWpj; type: mc; files:/afs/desy.de/user/a/adraeger/dr_input/13TeV/final_version/wpj/Expectation.root; tree: LostLeptonExpectation; weight: Weight
+dataset :: label: MCExSingleTop; type: mc; files:/afs/desy.de/user/a/adraeger/dr_input/13TeV/final_version/singleTop/Expectation.root; tree: LostLeptonExpectation; weight: Weight
 
 #############################################################################################################
 #special selection

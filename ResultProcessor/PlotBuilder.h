@@ -89,7 +89,7 @@ private:
   TLegend* legend(unsigned int nEntries) const;
   TString lumiLabel() const;
   TString dataSetLegEntry(const TH1* h, const DataSet* ds) const;
-  void setYRange(TH1* &h, double logMin = -1.) const;
+  void setYRange(TH1* &h, double logMin = -1., int legendSize=0) const;
 
   bool checkForUnderOverFlow(const TH1* h, const TString &var, const DataSet *dataSet) const;
 };

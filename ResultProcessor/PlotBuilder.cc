@@ -267,7 +267,7 @@ void PlotBuilder::plotComparedDistributions(const TString &var, const DataSets &
       leg->AddEntry(h," "+Style::tlatexLabel(*itd),"P");
     }
     if( histParams.norm() ) setYRange(h,histParams.logy()?3E-6:-1.);
-    else setYRange(h,histParams.logy()?3E-1:-1.);
+    else setYRange(h,histParams.logy()?3E-1:-1.,1);
     hists.push_back(h);
   }
 
@@ -321,7 +321,7 @@ void PlotBuilder::plotStackedDistributions(const TString &var, const DataSets &d
   // Draw
   TCanvas* can = new TCanvas("can","",canSize_,canSize_);
   can->cd();
-  setYRange(hists.front(),histParams.logy()?3E-1:-1.);
+  setYRange(hists.front(),histParams.logy()?3E-1:-1.,hists.size());
   hists.front()->Draw("HISTE");
   for(std::vector<TH1*>::iterator it = hists.begin()+1;
       it != hists.end(); ++it) {
@@ -409,15 +409,16 @@ void PlotBuilder::plotDataVsBkg(const TString &var, const DataSet *data, const D
   // ratio frame
   TH1 *hRatioFrame = static_cast<TH1*>(hData->Clone("RatioFrame"));
   for(int xBin = 1; xBin <= hRatioFrame->GetNbinsX(); ++xBin) {
-    hRatioFrame->SetBinContent(xBin,1.);
+    hRatioFrame->SetBinContent(xBin,0.);
   }
   hRatioFrame->GetXaxis()->SetTitle(hData->GetXaxis()->GetTitle());
 	// XXXXXXXXXXXXXXXXXXXX
   //hRatioFrame->GetYaxis()->SetRangeUser(0.55,1.95);
 	hRatioFrame->GetYaxis()->SetRangeUser(.0,2);
-  hRatioFrame->SetLineStyle(2);
+	hRatioFrame->GetYaxis()->SetRangeUser(-1.0,0.95);
+  hRatioFrame->SetLineStyle(1);
   hRatioFrame->SetLineColor(kBlack);
-  hRatioFrame->SetLineWidth(2);
+  hRatioFrame->SetLineWidth(1);
   hRatioFrame->SetFillColor(0);
   hRatioFrame->GetYaxis()->SetNdivisions(205);
   hRatioFrame->GetYaxis()->SetTickLength(gStyle->GetTickLength("Y")/0.2);
@@ -445,7 +446,13 @@ void PlotBuilder::plotDataVsBkg(const TString &var, const DataSet *data, const D
   // Fill the ratio plot
   TH1 *hRatio = static_cast<TH1*>(hData->Clone("Ratio"));
   hRatio->Divide(stack.front());
-  hRatioFrame->GetYaxis()->SetTitle("#frac{"+Style::tlatexType(data)+"}{"+Style::tlatexType(bkgs.front())+"}");
+	// XXXXXXXXXXXXXXXXXXXXXXXXXXXXX ratio at label of ratio plot
+//   hRatioFrame->GetYaxis()->SetTitle("#frac{"+Style::tlatexType(data)+"}{"+Style::tlatexType(bkgs.front())+"}");
+	// comment out the for loop to not have ratio-1 plot
+	for(int xBin = 1; xBin <= hRatio->GetNbinsX(); ++xBin) {
+		hRatio->SetBinContent(xBin,hRatio->GetBinContent(xBin)-1);
+	}
+	hRatioFrame->GetYaxis()->SetTitle("("+Style::tlatexType(data)+"-"+Style::tlatexType(bkgs.front())+")/"+Style::tlatexType(bkgs.front())+"");
 
   // Create the error band
   TGraphAsymmErrors* uncRatio = 0;
@@ -491,7 +498,7 @@ void PlotBuilder::plotDataVsBkg(const TString &var, const DataSet *data, const D
 
   //// Draw everything
   can->cd();
-  setYRange(stack.front(),histParams.logy()?3E-1:-1.);
+  setYRange(stack.front(),histParams.logy()?3E-1:-1.,stack.size());
   stack.front()->Draw("HISTE");
   for(std::vector<TH1*>::iterator it = stack.begin()+1;
       it != stack.end(); ++it) {
@@ -884,6 +891,8 @@ void PlotBuilder::setMarkerStyle(TH1* h, const DataSet *dataSet) const {
   h->SetMarkerStyle(markerStyle(dataSet));
   h->SetMarkerColor(color(dataSet));
   h->SetLineColor(h->GetMarkerColor());
+	h->SetMarkerSize(0.95);
+	
 }
 
 
@@ -1018,15 +1027,16 @@ TString PlotBuilder::dataSetLegEntry(const TH1* h, const DataSet* ds) const {
 }
 
 
-void PlotBuilder::setYRange(TH1* &h, double logMin) const {
+void PlotBuilder::setYRange(TH1* &h, double logMin,int legendSize) const {
   bool log = logMin > 0.;
   double max = h->GetBinContent(h->GetMaximumBin());
   double min = 0.;
+	if(legendSize>1) legendSize=1;
   if( log ) min = logMin;
 
   double relHistHeight = 1. - (gStyle->GetPadTopMargin() + gStyle->GetPadBottomMargin() );
   if( log ) {
-    max = min * std::pow(max/min,0.9/relHistHeight);
+		max = min * std::pow(max/min,0.9/relHistHeight)*std::pow (10, legendSize);
   } else {
     relHistHeight -= 0.3;
     max = (max-min)/relHistHeight + min;

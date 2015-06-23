@@ -2,7 +2,7 @@
 global :: id: Closure
 global :: lumi: 4
 global :: publication status: Preliminary
-global :: output formats: eps, pdf
+global :: output formats: pdf
 style :: plot yields: true 
 
 
@@ -33,9 +33,9 @@ variable :: name: selectedIDIsoElectronsNum; type: Int_t
 #############################################################################################################
 # Specify the data source and label the type of data
 
-dataset :: label: MCEx; type: mc; files:/afs/desy.de/user/a/adraeger/dr_input/13TeV/Expectation_ttbar_wpj_singleTop.root ; tree: LostLeptonExpectation; weight: Weight
-dataset :: label: MuPrMTWDiLepIsoTrackReduced; type: mcprediction; files:/afs/desy.de/user/a/adraeger/dr_input/13TeV/Prediction_ttbar_wpj_singleTop.root  ; tree: LostLeptonPrediction; weight: totalWeightDiLepIsoTrackReduced ; scales:0.5
-dataset :: label: ElecPrMTWDiLepIsoTrackReduced; type: mcprediction; files:/afs/desy.de/user/a/adraeger/dr_input/13TeV/Prediction_ttbar_wpj_singleTop.root  ; tree: LostLeptonPrediction; weight: totalWeightDiLepIsoTrackReduced ; scales:0.5
+dataset :: label: MCEx; type: mc; files:/afs/desy.de/user/a/adraeger/dr_input/13TeV/final_version/Expectation_ttbar_wpj_singleTop.root ; tree: LostLeptonExpectation; weight: Weight
+dataset :: label: MuPrMTWDiLepIsoTrackReduced; type: mcprediction; files:/afs/desy.de/user/a/adraeger/dr_input/13TeV/final_version/Prediction_ttbar_wpj_singleTop.root  ; tree: LostLeptonPrediction; weight: totalWeightDiLepIsoTrackReduced ; scales:0.5
+dataset :: label: ElecPrMTWDiLepIsoTrackReduced; type: mcprediction; files:/afs/desy.de/user/a/adraeger/dr_input/13TeV/final_version/Prediction_ttbar_wpj_singleTop.root  ; tree: LostLeptonPrediction; weight: totalWeightDiLepIsoTrackReduced ; scales:0.5
 
 #############################################################################################################
 #special selection

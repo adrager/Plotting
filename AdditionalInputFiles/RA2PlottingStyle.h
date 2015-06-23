@@ -12,8 +12,8 @@ public:
     //  For the canvas
     gStyle->SetCanvasBorderMode(0);
     gStyle->SetCanvasColor(kWhite);
-    gStyle->SetCanvasDefH(800); //Height of canvas
-    gStyle->SetCanvasDefW(800); //Width of canvas
+    gStyle->SetCanvasDefH(900); //Height of canvas
+    gStyle->SetCanvasDefW(900); //Width of canvas
     gStyle->SetCanvasDefX(0);   //Position on screen
     gStyle->SetCanvasDefY(0);
   
@@ -36,9 +36,9 @@ public:
     gStyle->SetGridWidth(1);
   
     //  Margins
-    gStyle->SetPadTopMargin(0.08);
+    gStyle->SetPadTopMargin(0.13);
     gStyle->SetPadBottomMargin(0.19);
-    gStyle->SetPadLeftMargin(0.20);
+    gStyle->SetPadLeftMargin(0.17);
     gStyle->SetPadRightMargin(0.07);
 
     //  For the histo:
@@ -64,11 +64,11 @@ public:
     gStyle->SetLabelColor(1,"XYZ");
     gStyle->SetLabelFont(42,"XYZ");
     gStyle->SetLabelOffset(0.007,"XYZ");
-    gStyle->SetLabelSize(0.045,"XYZ");
+    gStyle->SetLabelSize(0.04,"XYZ");
     gStyle->SetTitleFont(42,"XYZ");
     gStyle->SetTitleSize(0.06,"XYZ");
-    gStyle->SetTitleXOffset(1.2);
-    gStyle->SetTitleYOffset(1.7);
+    gStyle->SetTitleXOffset(1.4);
+    gStyle->SetTitleYOffset(1.0);
 
     //  For the legend
     gStyle->SetLegendBorderSize(0);
